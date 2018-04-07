@@ -14,6 +14,20 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'devise'
+gem 'faker'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'twitter-bootstrap-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'slim-rails'
+gem 'pry-rails'
+gem "mini_magick"
+gem 'kaminari'
+gem "font-awesome-rails"
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
