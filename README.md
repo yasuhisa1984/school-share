@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 各バージョンと動作確認環境
 
-Things you may want to cover:
+* Ruby バージョン 2.4.1
 
-* Ruby version
+* rails バージョン 5.1.6
 
-* System dependencies
+* Database postgresql
 
-* Configuration
+* サービス概要 プログラミングスクールで学んだスキルの共有サイト
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 本番環境 https://school-share.herokuapp.com/
