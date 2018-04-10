@@ -1,0 +1,23 @@
+h1
+  | School#indexpage
+p
+  | Find me in app/views/top/index.html.erb
+- @schools.each do |school|
+  p
+    | 学校名:
+    = school.name
+  p
+    | サイトURL:
+    = school.url
+  p
+    | 学校の説明:
+    = school.description
+  - if school.remote
+    p
+      | リモート:あり
+  - else
+    p
+      | リモート:なし
+  p
+    | 学校の画像:
+    = image_tag("gakkou.png")
