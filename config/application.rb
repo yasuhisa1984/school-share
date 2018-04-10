@@ -9,9 +9,9 @@ module SchoolShare
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-
     config.i18n.available_locales = [:en, :ja]
     config.i18n.default_locale = :ja
+    config.generators.template_engine = :slim
     config.generators do |g|
       g.helper false
       g.assets false
