@@ -1,0 +1,13 @@
+<h1>School#indexpage</h1>
+<p>Find me in app/views/top/index.html.erb</p>
+<% @schools.each do |school| %>
+  <p>学校名:<%= school.name %></p>
+  <p>サイトURL:<%= school.url %></p>
+  <p>学校の説明:<%= school.description %></p> 
+  <% if school.remote %>
+    <p>リモート:あり</p>
+  <% else %>
+    <p>リモート:なし</p>
+  <% end %>
+  <p>学校の画像:<%= image_tag("gakkou.png") %></p>
+<% end %>
