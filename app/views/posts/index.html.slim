@@ -1,0 +1,14 @@
+h1
+  | 投稿一覧を見る
+- @posts.each do |post|
+  - post.schools.each do |school|
+    - if school.name
+      | 学校の名前:
+      = school.name
+      p
+      | 仕事:
+      = post.work
+      p
+      | ストーリー:
+      = post.story
+      hr
