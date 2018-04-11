@@ -39,7 +39,6 @@ Faker::Config.locale = :ja
 end
 
 #ポスト
-
 5.times do |n|
   work = ['ポートフォリオurl1','ポートフォリオurl2'].sample
   story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
