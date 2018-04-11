@@ -21,7 +21,7 @@ Faker::Config.locale = :ja
 }
 
 #スクール
-5.times do |n|
+5.times {
   name = ['プログラミングスクールA','プログラミングスクールB','ITスクールC','ITスクールD','パソコンスクールE'].sample
   url = Faker::Internet.url
   description = Faker::Hacker.say_something_smart
@@ -34,18 +34,16 @@ Faker::Config.locale = :ja
     description: "#{description}",
     school_image_url: "#{school_image_url}",
     remote: "#{remote}",
-    school_id: n + 1
   )
-end
+}
 
 #ポスト
-5.times do |n|
+5.times {
   work = ['ポートフォリオurl1','ポートフォリオurl2'].sample
   story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
 
   Post.create!(
-    post_id: n + 1,
     work: "#{work}",
     story: "#{story}"
   )
-end
+}
