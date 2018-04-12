@@ -9,6 +9,17 @@
 require 'faker'
 Faker::Config.locale = :ja
 
+#ユーザー
+5.times {
+    email = Faker::Internet.email
+    password = ENV['SEED_USER_PASSWORD']
+    user = User.create!(
+      email: email,
+      password: password,
+      password_confirmation: password
+    )
+}
+
 #スクール
 5.times {
   name = ['プログラミングスクールA','プログラミングスクールB','ITスクールC','ITスクールD','パソコンスクールE'].sample
@@ -22,6 +33,17 @@ Faker::Config.locale = :ja
     url: "#{url}",
     description: "#{description}",
     school_image_url: "#{school_image_url}",
-    remote: "#{remote}"
+    remote: "#{remote}",
+  )
+}
+
+#ポスト
+5.times {
+  work = ['ポートフォリオurl1','ポートフォリオurl2'].sample
+  story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
+
+  Post.create!(
+    work: "#{work}",
+    story: "#{story}"
   )
 }

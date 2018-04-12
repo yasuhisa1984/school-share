@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409072022) do
+ActiveRecord::Schema.define(version: 20180410095204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "post_schools", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id", "school_id"], name: "index_post_schools_on_post_id_and_school_id", unique: true
+    t.index ["post_id"], name: "index_post_schools_on_post_id"
+    t.index ["school_id"], name: "index_post_schools_on_school_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "work"
+    t.text "story"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "schools", force: :cascade do |t|
     t.string "name", null: false
@@ -41,4 +58,7 @@ ActiveRecord::Schema.define(version: 20180409072022) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "post_schools", "posts"
+  add_foreign_key "post_schools", "schools"
 end

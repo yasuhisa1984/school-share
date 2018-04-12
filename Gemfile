@@ -21,6 +21,7 @@ gem 'faker'
 gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'dotenv-rails'
 
 
 group :development, :test do
