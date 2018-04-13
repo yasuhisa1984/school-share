@@ -19,18 +19,20 @@ ActiveRecord::Schema.define(version: 20180413020449) do
     t.string "name", null: false
     t.string "postalcode"
     t.string "area"
-    t.integer "school_id"
+    t.bigint "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_addresses_on_school_id"
   end
 
   create_table "courses", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price"
     t.string "period"
-    t.integer "school_id"
+    t.bigint "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_courses_on_school_id"
   end
 
   create_table "post_schools", force: :cascade do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 20180413020449) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "schools"
+  add_foreign_key "courses", "schools"
   add_foreign_key "post_schools", "posts"
   add_foreign_key "post_schools", "schools"
 end
