@@ -5,7 +5,7 @@ p
 - @schools.each do |school|
   p
     | 学校名:
-    = school.name
+    = link_to school.name, school_path(school.id)
   p
     | サイトURL:
     = school.url
@@ -21,3 +21,4 @@ p
   p
     | 学校の画像:
     = image_tag("gakkou.png")
+

@@ -58,6 +58,35 @@ Faker::Config.locale = :ja
   )
 }
 
+#アドレス
+5.times {
+  name = Faker::Address.state + Faker::Address.city + Faker::Address.street_address
+  postalcode = Faker::Address.zip_code
+  area = ['関東地方','中部地方','北海道/東北地方','近畿地方','四国地方',
+          '中国地方','九州／沖縄地方','全国対応(オンライン)'].sample
+
+  Address.create!(
+    name: "#{name}",
+    postalcode: "#{postalcode}",
+    area: "#{area}",
+    school_id: School.ids.first
+  )
+}
+
+#コース
+5.times {
+  name = ['AIコース','pythonコース','Scalaコース','Webアプリケーションコース'].sample
+  price = Faker::Number.number(2)
+  period = ['3ヶ月','6ヶ月','1年','2年','特になし'].sample
+
+  Course.create!(
+    name: "#{name}",
+    price: "#{price}",
+    period: "#{period}",
+    school_id: School.ids.first
+  )
+}
+
 #中間テーブルポストスクール
 unless PostSchool.first.school_id
   PostSchool.create!(
