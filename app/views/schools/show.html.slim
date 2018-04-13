@@ -1,0 +1,26 @@
+h1
+  = @school.name
+  | について
+p
+  | 学校名:
+  = @school.name
+p
+  | サイトURL:
+  = @school.url
+p
+  | 学校の説明:
+  = @school.description
+- if @school.remote
+  p
+    | リモート:あり
+- else
+  p
+    | リモート:なし
+h1
+  = @school.name
+  | の全国教室状況
+- @addresses.each do |address|
+  p
+    = address.name
+  p
+    = address.area
