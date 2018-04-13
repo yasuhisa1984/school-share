@@ -62,3 +62,17 @@ Faker::Config.locale = :ja
     school_id: School.ids.first
   )
 }
+
+#コース
+5.times {
+  name = ['AIコース','pythonコース','Scalaコース','Webアプリケーションコース'].sample
+  price = Faker::Number.number(2)
+  period = ['3ヶ月','6ヶ月','1年','2年','特になし'].sample
+
+  Course.create!(
+    name: "#{name}",
+    price: "#{price}",
+    period: "#{period}",
+    school_id: School.ids.first
+  )
+}
