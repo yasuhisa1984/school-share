@@ -11,13 +11,23 @@ Faker::Config.locale = :ja
 
 #ユーザー
 5.times {
-    email = Faker::Internet.email
-    password = ENV['SEED_USER_PASSWORD']
-    user = User.create!(
-      email: email,
-      password: password,
-      password_confirmation: password
-    )
+  name = Faker::LordOfTheRings.character
+  email = Faker::Internet.email
+  age = Faker::Number.number(2)
+  gender = ['男','女'].sample
+  history = ['独学でプログラミング歴半年です。','Sierで2年間働いてました。'].sample
+  future = ['IOTの開発に役立てたいです。','ITの力で人材不足を解消！'].sample
+  password = ENV['SEED_USER_PASSWORD']
+  user = User.create!(
+    name: name,
+    email: email,
+    age: age,
+    gender: gender,
+    history: history,
+    future: future,
+    password: password,
+    password_confirmation: password
+  )
 }
 
 #スクール
@@ -41,10 +51,10 @@ Faker::Config.locale = :ja
 5.times {
   work = ['ポートフォリオurl1','ポートフォリオurl2'].sample
   story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
-
   Post.create!(
     work: "#{work}",
-    story: "#{story}"
+    story: "#{story}",
+    user_id: User.ids.first
   )
 }
 
@@ -76,3 +86,11 @@ Faker::Config.locale = :ja
     school_id: School.ids.first
   )
 }
+
+#中間テーブルポストスクール
+unless PostSchool.first.school_id
+  PostSchool.create!(
+    school_id: User.ids.first,
+    post_id: Post.ids.first
+  )
+end
