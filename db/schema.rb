@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410095204) do
+ActiveRecord::Schema.define(version: 20180413010807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "postalcode"
+    t.string "area"
+    t.integer "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "post_schools", force: :cascade do |t|
     t.bigint "post_id"
@@ -30,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180410095204) do
     t.text "story"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -55,6 +65,11 @@ ActiveRecord::Schema.define(version: 20180410095204) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
+    t.integer "age"
+    t.string "gender"
+    t.text "history"
+    t.text "future"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
