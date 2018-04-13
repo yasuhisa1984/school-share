@@ -21,6 +21,22 @@ h1
   | の全国教室状況
 - @addresses.each do |address|
   p
+    | 住所:
     = address.name
   p
+    | 地域:
     = address.area
+h1
+  = @school.name
+  | のコース一覧
+- @courses.each do |course|
+  p
+    | コース名:
+    = course.name
+  p
+    | 価格:
+    = course.price
+    | 万円
+  p
+    | 受講期間:
+    = course.period
