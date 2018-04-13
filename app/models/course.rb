@@ -1,3 +1,3 @@
 class Course < ApplicationRecord
-  belongs_to :schools, optional: true
+  belongs_to :school
 end
