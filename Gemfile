@@ -22,7 +22,7 @@ gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'dotenv-rails'
-
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
