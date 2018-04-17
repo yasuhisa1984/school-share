@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: 'tops#index'
   devise_for :users
   resources :schools,only:[:index, :show]
-  resources :posts, only:[:index, :new, :create, :destroy]
+  resources :posts, only:[:index, :new, :show, :create, :destroy]
 end

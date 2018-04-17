@@ -31,21 +31,21 @@ Faker::Config.locale = :ja
 }
 
 #スクール
-5.times {
-  name = ['プログラミングスクールA','プログラミングスクールB','ITスクールC','ITスクールD','パソコンスクールE'].sample
+5.times do |n|
+  name = ['プログラミングスクールA','プログラミングスクールB','ITスクールC','ITスクールD','パソコンスクールE']
   url = Faker::Internet.url
   description = Faker::Hacker.say_something_smart
   school_image_url = 'gakkou.png'
   remote = [true,false].sample
 
   School.create!(
-    name: "#{name}",
+    name: "#{name[n]}",
     url: "#{url}",
     description: "#{description}",
     school_image_url: "#{school_image_url}",
     remote: "#{remote}",
   )
-}
+end
 
 #ポスト
 5.times {
@@ -74,23 +74,71 @@ Faker::Config.locale = :ja
 }
 
 #コース
-5.times {
-  name = ['AIコース','pythonコース','Scalaコース','Webアプリケーションコース'].sample
+5.times do |n|
+  name = ['AIコース','pythonコース','Scalaコース','Webアプリケーションコース','JavaScriptコース'].sample
   price = Faker::Number.number(2)
   period = ['3ヶ月','6ヶ月','1年','2年','特になし'].sample
 
   Course.create!(
-    name: "#{name}",
+    name: "#{name[n]}",
     price: "#{price}",
     period: "#{period}",
     school_id: School.ids.first
   )
-}
+end
 
-#中間テーブルポストスクール
-unless PostSchool.first.school_id
+#目的
+5.times do |n|
+  name = ['就職・転職','趣味','起業','仲間作り','その他']
+  Purpose.create!(
+    name: "#{name[n]}"
+  )
+end
+
+#スキル
+5.times do |n|
+  name = ['Ruby','Github','チーム開発','Jquery','アルゴリズム','マネージメント力']
+  Skill.create!(
+    name: "#{name[n]}"
+  )
+end
+
+#中間テーブルのポストとスクール
+unless PostSchool.first
   PostSchool.create!(
-    school_id: User.ids.first,
-    post_id: Post.ids.first
+    post_id: Post.ids.first,
+    school_id: School.ids.first
+  )
+end
+
+#中間テーブルのポストと目的
+unless PostPurpose.first
+  PostPurpose.create!(
+    post_id: Post.ids.first,
+    purpose_id: Purpose.ids.first
+  )
+end
+
+#中間テーブルのポストとスキル
+unless PostSkill.first
+  PostSkill.create!(
+    post_id: Post.ids.first,
+    skill_id: Skill.ids.first
+  )
+end
+
+#中間テーブルの学校と目的
+unless SchoolPurpose.first
+  SchoolPurpose.create!(
+    school_id: School.ids.first,
+    purpose_id: Post.ids.first
+  )
+end
+
+#中間テーブルの学校とスキル
+unless SchoolSkill.first
+  SchoolSkill.create!(
+    school_id: School.ids.first,
+    skill_id: Skill.ids.first
   )
 end
