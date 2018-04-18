@@ -2,15 +2,17 @@
   = render 'application/display_simple_form_error', form_error: f.error_notification
   label.text.required
     abbr title="required"
-      | [必須] 学校
-  = f.text_field :schools, value:'', label: "ポートフォリオURL", placeholder: "あなたの在学もしくは、卒業した学校をご記入ください。", class: 'form-control', required: true
+      | [必須] 在学中もしくは卒業した学校を選択してください。
+  br
+  = collection_select(:post, :schools, @schools, :id, :name, prompt: '選択してください')
+  br
   = f.label :skills
     | [必須] 身についたスキル
-  = f.text_field :skills, value: '', class: 'form-control'
+  = f.text_field :skills, value: '', class: 'form-control', required: true
   = f.label :purposes
     | 目的
   = f.text_field :purposes, value:'', class: 'form-control'
-  = f.input :work, label: "ポートフォリオURL", placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: {class: 'form-control'}, required: false
+  = f.input :work, label: "ポートフォリオURL", placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: {class: 'form-control'}
   br
   = f.input :story, label: "役立ったエピソード", as: :text, placeholder: "実際に役立ったエピソードをご記入ください。", input_html: {class: 'form-control', rows: 10}, required: true
   br
