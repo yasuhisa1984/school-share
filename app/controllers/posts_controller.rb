@@ -13,18 +13,18 @@ class PostsController < ApplicationController
   end
 
   def show
+    @school = @post.school
     @skills = @post.skills
+    @post_skills = @post.skills
     @purposes = @post.purposes
   end
 
   def create
     @post = current_user.posts.build(post_params)
-    skill_registered = @post.skill_already_register?
-    @post.skills = @post.skill_duplication_remove
+    @post.skills = @post.skill_remove_nil
 
     if @post.save
-      @post.register_middle_table
-      @post.register_middle_skill_table(skill_registered[:post_skills],skill_registered[:school_skills])
+      @post.register_table(score_params)
       redirect_to root_path, notice: "投稿しました"
     else
       render :new
@@ -39,9 +39,14 @@ class PostsController < ApplicationController
   def set_form
     @schools = School.all
     @purposes = Purpose.all
+    @points = [1,2,3,4,5]
+  end
+
+  def score_params
+    params.require(:post_score).require(["0","1","2","3","4"]).map! {|item| item.permit("point")}
   end
 
   def post_params
-    params.require(:post).permit(:work, :story, skills_attributes: :name, post_purposes_attributes: :purpose_id, post_schools_attributes: :school_id)
+    params.require(:post).permit(:work, :story, :school_id, skills_attributes: :name, post_purposes_attributes: :purpose_id)
   end
 end

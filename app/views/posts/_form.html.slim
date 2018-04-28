@@ -4,13 +4,15 @@
     abbr title="required"
       | [必須] 在学中もしくは卒業した学校を選択してください。
   br
-  = f.simple_fields_for :post_schools do |school|
-    = school.collection_select :school_id, schools, :id, :name, prompt: '選択してください', required: true
+  = f.collection_select :school_id, schools, :id, :name, prompt: '選択してください', required: true
   br
   = f.label :skills
     | [必須] 身についたスキル
+  br
   = f.simple_fields_for :skills do |skill|
     = skill.text_field :name
+    = f.select_tag "post_score" + "#{[skill.index]}point", options_for_select(points), prompt: '選択してください', size: '1x1'
+    br
   br
   = f.label :purposes
     | 目的
