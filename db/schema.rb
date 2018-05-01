@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427014607) do
+ActiveRecord::Schema.define(version: 20180415011505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,14 +45,32 @@ ActiveRecord::Schema.define(version: 20180427014607) do
     t.index ["purpose_id"], name: "index_post_purposes_on_purpose_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "work"
-    t.text "story"
+  create_table "post_schools", force: :cascade do |t|
+    t.bigint "post_id"
     t.bigint "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id", "school_id"], name: "index_post_schools_on_post_id_and_school_id", unique: true
+    t.index ["post_id"], name: "index_post_schools_on_post_id"
+    t.index ["school_id"], name: "index_post_schools_on_school_id"
+  end
+
+  create_table "post_skills", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id", "skill_id"], name: "index_post_skills_on_post_id_and_skill_id", unique: true
+    t.index ["post_id"], name: "index_post_skills_on_post_id"
+    t.index ["skill_id"], name: "index_post_skills_on_skill_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "work"
+    t.text "story"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.index ["school_id"], name: "index_posts_on_school_id"
   end
 
   create_table "purposes", force: :cascade do |t|
@@ -71,6 +89,15 @@ ActiveRecord::Schema.define(version: 20180427014607) do
     t.index ["school_id"], name: "index_school_purposes_on_school_id"
   end
 
+  create_table "school_skills", force: :cascade do |t|
+    t.bigint "school_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_school_skills_on_school_id"
+    t.index ["skill_id"], name: "index_school_skills_on_skill_id"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name", null: false
     t.string "url"
@@ -81,22 +108,11 @@ ActiveRecord::Schema.define(version: 20180427014607) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "scores", force: :cascade do |t|
-    t.integer "point", null: false
-    t.bigint "skill_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["skill_id"], name: "index_scores_on_skill_id"
-  end
-
   create_table "skills", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "post_id"
-    t.bigint "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_skills_on_post_id"
-    t.index ["school_id"], name: "index_skills_on_school_id"
+    t.index ["name"], name: "index_skills_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,10 +141,12 @@ ActiveRecord::Schema.define(version: 20180427014607) do
   add_foreign_key "courses", "schools"
   add_foreign_key "post_purposes", "posts"
   add_foreign_key "post_purposes", "purposes"
-  add_foreign_key "posts", "schools"
+  add_foreign_key "post_schools", "posts"
+  add_foreign_key "post_schools", "schools"
+  add_foreign_key "post_skills", "posts"
+  add_foreign_key "post_skills", "skills"
   add_foreign_key "school_purposes", "purposes"
   add_foreign_key "school_purposes", "schools"
-  add_foreign_key "scores", "skills"
-  add_foreign_key "skills", "posts"
-  add_foreign_key "skills", "schools"
+  add_foreign_key "school_skills", "schools"
+  add_foreign_key "school_skills", "skills"
 end

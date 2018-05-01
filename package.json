@@ -1,7 +1,5 @@
 {
   "name": "school-share",
   "private": true,
-  "dependencies": {
-    "chart.js": "2.7.1"
-  }
+  "dependencies": {}
 }

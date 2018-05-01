@@ -49,13 +49,12 @@ end
 
 #ポスト
 5.times {
-  work = ['http://github.com','http://github.com/user'].sample
+  work = ['ポートフォリオurl1','ポートフォリオurl2'].sample
   story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
   Post.create!(
     work: "#{work}",
     story: "#{story}",
-    user_id: User.ids.sample,
-    school_id: School.ids.first
+    user_id: User.ids.first
   )
 }
 
@@ -100,31 +99,46 @@ end
 5.times do |n|
   name = ['Ruby','Github','チーム開発','Jquery','アルゴリズム','マネージメント力']
   Skill.create!(
-    name: "#{name[n]}",
-    post_id: Post.ids[n],
-    school_id: School.ids[n]
+    name: "#{name[n]}"
   )
 end
 
-#スコア
-5.times do |n|
-  point = [*1..5]
-
-  Score.create!(
-    point: "#{point[n]}",
-    skill_id: Skill.ids[n]
+#中間テーブルのポストとスクール
+unless PostSchool.first
+  PostSchool.create!(
+    post_id: Post.ids.first,
+    school_id: School.ids.first
   )
 end
 
-#中間テーブル
-5.times do |n|
-  SchoolPurpose.create!(
-    school_id: School.ids.first,
-    purpose_id: Post.ids[n]
-  )
-
+#中間テーブルのポストと目的
+unless PostPurpose.first
   PostPurpose.create!(
     post_id: Post.ids.first,
-    purpose_id: Purpose.ids[n]
+    purpose_id: Purpose.ids.first
+  )
+end
+
+#中間テーブルのポストとスキル
+unless PostSkill.first
+  PostSkill.create!(
+    post_id: Post.ids.first,
+    skill_id: Skill.ids.first
+  )
+end
+
+#中間テーブルの学校と目的
+unless SchoolPurpose.first
+  SchoolPurpose.create!(
+    school_id: School.ids.first,
+    purpose_id: Post.ids.first
+  )
+end
+
+#中間テーブルの学校とスキル
+unless SchoolSkill.first
+  SchoolSkill.create!(
+    school_id: School.ids.first,
+    skill_id: Skill.ids.first
   )
 end

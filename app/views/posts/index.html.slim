@@ -1,16 +1,14 @@
 h1
   | 投稿一覧を見る
 - @posts.each do |post|
-    p
-    = link_to post.user.name, post_path(post.id)
-    | さんの投稿
-    p
-    | 学んでいたプログラミングスクール:
-    = link_to post.school.name, school_path(post.school.id)
-    p
-    | ポートフォリオ:
-    = post.work
-    p
-    | 学んだことが役立ったエピソード:
-    = post.story
-    hr
+  - post.schools.each do |school|
+    - if school.name
+      | 学校の名前:
+      = school.name
+      p
+      | 仕事:
+      = post.work
+      p
+      | ストーリー:
+      = post.story
+      hr
