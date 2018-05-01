@@ -19,10 +19,13 @@ gem 'better_errors'
 gem 'devise'
 gem 'faker'
 gem 'twitter-bootstrap-rails'
+gem 'jquery-rails'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'dotenv-rails'
-
+gem 'simple_form'
+gem 'chart-js-rails'
+gem 'gon'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
