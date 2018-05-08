@@ -1,18 +1,33 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.wrapper
+  .header.header-filter style=("background-image: url('/assets/desk.jpg'); background-size: cover; background-position: top center;")
+    .bg-mask
+      .container
+        .row
+          .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.mt-xl.mb-xl
+            .card.card-signup
+              = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                .header.header-primary.text-center
+                  h4 ログイン
+                  .social-line
+                    a.btn.btn-just-icon href="#pablo" 
+                      i.fa.fa-facebook-square
+                    a.btn.btn-just-icon href="#pablo" 
+                      i.fa.fa-twitter
+                p.text-divider
+                .content
+                  .input-group
+                    span.input-group-addon
+                      i.material-icons email
+                    = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+                  .input-group.mb-md
+                    span.input-group-addon
+                      i.material-icons lock_outline
+                    = f.password_field :password, autocomplete: "off", class: "form-control"
+                  - if devise_mapping.rememberable?
+                    .field
+                      = f.check_box :remember_me
+                      = f.label :remember_me
+                    .actions.text-center
+                      = f.submit "Log in", class: ["btn", "btn-lg", "btn-raised", "btn-primary"]
+                  .action
+                      = render "devise/shared/links"
