@@ -1,4 +1,50 @@
-h1
-  | Top#index
-p
-  | Find me in app/views/top/index.html.erb
+- content_for :features, "landing-page"
+- content_for :class, "landing-page"
+.wrapper
+  .header.header-filter[style="background-image: url(/assets/pc.jpg);"]
+    .container
+      .row
+        .col-md-6
+          h1.title
+            | プログラミング教室選びで失敗しない
+          h4
+            | Every landing page needs a small description after the big bold title, that's why we added this text here. Add here all the information that can make you or your product create the first impression.
+          br
+          a.btn.btn-danger.btn-raised.btn-lg[href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
+            i.fa.fa-play
+            |  Watch video 
+  .main.main-raised
+    .container
+      .section.text-center.section-landing
+        .row
+          .col-md-8.col-md-offset-2
+            h2.title
+              | Let's talk product
+            h5.description
+              | This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.
+        .features
+          .row
+            .col-md-4
+              .feature.feature-primary
+                i.material-icons
+                  | chat
+                h4.title
+                  | First Feature
+                p.description
+                  | Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.
+            .col-md-4
+              .feature.feature-success
+                i.material-icons
+                  | verified_user
+                h4.title
+                  | Second Feature
+                p.description
+                  | Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.
+            .col-md-4
+              .feature.feature-danger
+                i.material-icons
+                  | fingerprint
+                h4.title
+                  | Third Feature
+                p.description
+                  | Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.
