@@ -1,0 +1,27 @@
+nav.navbar.navbar-info.navbar-absolute
+  .container
+    .navbar-header
+      button.navbar-toggle[type="button" data-toggle="collapse" data-target="#navigation-example"]
+        span.sr-only
+          | Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to root_path, class: 'navbar-brand' do
+        | SchoolShare
+    #navigation-example.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          = link_to '学校一覧', schools_path
+        li
+          = link_to '投稿一覧', posts_path
+        - if user_signed_in?
+            li
+              = link_to '投稿する', new_post_path
+            li
+              = link_to 'マイページ', user_path(current_user)
+            li
+              = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+            li
+              = link_to 'ログイン', new_user_session_path
