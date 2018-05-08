@@ -26,6 +26,7 @@ gem 'dotenv-rails'
 gem 'simple_form'
 gem 'chart-js-rails'
 gem 'gon'
+gem 'material_kit', '~> 1.0', '>= 1.0.0.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
