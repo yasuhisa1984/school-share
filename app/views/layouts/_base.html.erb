@@ -17,7 +17,7 @@
   </head>
   <body class="<%= yield :class %>" data-features="<%= yield :features %>">
     <%= render 'layouts/header' %>
-    <%= render partial: 'application/display_flash_message', flash: flash %>
+    <%= render 'application/display_flash_message', flash: flash %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
