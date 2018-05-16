@@ -1,0 +1,16 @@
+- if user_signed_in?
+  h1
+    | マイページ
+  p
+    |名前:
+    = @user.name
+  p
+    |メールアドレス:
+    = @user.email
+
+- else
+  h1
+    = @user
+    | さんのページ
+
+

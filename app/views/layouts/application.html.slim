@@ -6,6 +6,11 @@ html
     = Gon::Base.render_data
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+    = stylesheet_link_tag '//fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    = render 'layouts/header'
+    = render partial: 'application/display_flash_message', flash: flash
     = yield
+    = render 'layouts/footer'
