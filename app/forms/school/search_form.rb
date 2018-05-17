@@ -5,26 +5,26 @@ class School::SearchForm
 
   def search
     normalize_values
-    rel = School
-    rel = rel.where(name: school_name) if school_name.present?
+    school_relation = School
+    school_relation = school_relation.where(name: school_name) if school_name.present?
 
     if address_area.present?
-      rel = rel.joins(:addresses)
-      rel = rel.where('addresses.area': address_area)
+      school_relation = school_relation.joins(:addresses)
+      school_relation = school_relation.where('addresses.area': address_area)
     end
 
     if purpose_name.present?
-      rel = rel.joins(:purposes)
-      rel = rel.where('purposes.name': purpose_name)
+      school_relation = school_relation.joins(:purposes)
+      school_relation = school_relation.where('purposes.name': purpose_name)
     end
 
     if skill_name.present?
-      rel = rel.joins(:skills)
-      rel = rel.where('skills.name LIKE(?)', "%#{skill_name}%")
+      school_relation = school_relation.joins(:skills)
+      school_relation = school_relation.where('skills.name LIKE(?)', "%#{skill_name}%")
     end
 
-    rel = rel.distinct
-    rel.order(:name)
+    school_relation = school_relation.distinct
+    school_relation.order(:name)
   end
 
   private
