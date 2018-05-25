@@ -16,3 +16,24 @@
 //= require_tree .
 //= require Chart.min.js
 //= require jquery
+//= require raty-js
+
+$(function() {
+  let post_score_array = [
+    "#post_score_0_point",
+    "#post_score_1_point",
+    "#post_score_2_point",
+    "#post_score_3_point",
+    "#post_score_4_point"
+  ];
+
+  //raty-jsの設定、クリックされたらhidden_fieldに値をセットする
+  $.each(post_score_array, function(index, value){
+    $(".points" + index).raty({score: 0, starType: 'i'})
+    $(".points" + index).raty('set', {
+      click: function(score) {
+        $(value).val(score);
+      }
+    });
+  })
+})
