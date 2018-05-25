@@ -2,14 +2,22 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show]
   before_action :set_form, only: [:new]
+  layout '_base'
 
   def index
     @posts = Post.all
   end
 
   def new
+    @search_form = School::SearchForm.new
     @post = Post.new
     @post.build_info
+  end
+
+  def search
+    @search_form = School::SearchForm.new(search_params)
+    @schools = @search_form.search.page(params[:page])
+    render 'new'
   end
 
   def show
@@ -17,17 +25,13 @@ class PostsController < ApplicationController
     @skills = @post.skills
     @post_skills = @post.skills
     @purposes = @post.purposes
-  end
+    @course = @post.course
+    gon.skill = []
+    gon.point = []
 
-  def create
-    @post = current_user.posts.build(post_params)
-    @post.skills = @post.skill_remove_nil
-
-    if @post.save
-      @post.register_table(score_params)
-      redirect_to root_path, notice: "投稿しました"
-    else
-      render :new
+    @skills.each do |skill|
+      gon.point << skill.scores.first.point.to_i
+      gon.skill << skill.name
     end
   end
 
@@ -37,16 +41,10 @@ class PostsController < ApplicationController
   end
 
   def set_form
-    @schools = School.all
-    @purposes = Purpose.all
-    @points = [1,2,3,4,5]
+    @schools = School.all.page(params[:page])
   end
 
-  def score_params
-    params.require(:post_score).require(["0","1","2","3","4"]).map! {|item| item.permit("point")}
-  end
-
-  def post_params
-    params.require(:post).permit(:work, :story, :school_id, skills_attributes: :name, post_purposes_attributes: :purpose_id)
+  def search_params
+    params.require(:search).permit(:school_name, :purpose_name, :address_area, :skill_name)
   end
 end
