@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :school
+  belongs_to :course
 
   has_many :skills, dependent: :destroy
   accepts_nested_attributes_for :skills
