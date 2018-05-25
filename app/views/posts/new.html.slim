@@ -1,3 +1,13 @@
-h1
-  | 新規投稿
-= render "posts/form", {posts: @post, schools: @schools, purposes: @purposes, points: @points}
+.container
+  .row
+    .col-md-8.col-xs-offset-2
+      h1
+        i.material-icons search
+        | 通っていた学校名を教えてください
+      = simple_form_for @search_form, as: 'search', url: :search_posts, html: { method: :get } do |f|
+        = f.label :school_name
+          | 学校名
+        = f.text_field :school_name, class: "form-control"
+        = button_tag type: 'submit', class: "square_btn" do
+          i.material-icons search 学校名を検索する
+      = render 'posts/school', {schools: @schools}
