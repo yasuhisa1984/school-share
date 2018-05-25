@@ -4,3 +4,11 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+
+.form-search {
+  background: #fff;
+  border: 1px solid #e8e9ea;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 15px;
+}

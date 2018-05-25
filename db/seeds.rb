@@ -64,7 +64,7 @@ end
   name = Faker::Address.state + Faker::Address.city + Faker::Address.street_address
   postalcode = Faker::Address.zip_code
   area = ['関東地方','中部地方','北海道/東北地方','近畿地方','四国地方',
-          '中国地方','九州／沖縄地方','全国対応(オンライン)'].sample
+          '中国地方','九州／沖縄地方','オンライン'].sample
 
   Address.create!(
     name: "#{name}",

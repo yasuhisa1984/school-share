@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root to: 'tops#index'
   devise_for :users
   resources :users, only: [:show]
-  resources :schools,only:[:index, :show]
+  resources :schools,only: [:index, :show] do
+    collection do
+      get :search
+    end
+  end
   resources :posts, only:[:index, :new, :show, :create, :destroy]
 end
