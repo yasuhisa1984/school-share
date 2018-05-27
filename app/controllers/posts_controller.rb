@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:show]
-  before_action :set_form, only: [:new]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_post, only: %i[show]
+  before_action :set_form, only: %i[new]
   layout '_base'
 
   def index
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def search
     @search_form = School::SearchForm.new(search_params)
     @schools = @search_form.search.page(params[:page])
-    render 'new'
+    render :new
   end
 
   def show

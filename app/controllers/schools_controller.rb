@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  before_action :set_form, only: [:index, :search, :new]
+  before_action :set_form, only: %i[index search new]
   layout '_base'
 
   def index
@@ -10,7 +10,7 @@ class SchoolsController < ApplicationController
   def search
     @search_form = School::SearchForm.new(search_params)
     @schools = @search_form.search.page(params[:page])
-    render 'index'
+    render :index
   end
 
   def new
