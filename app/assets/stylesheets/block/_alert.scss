@@ -1,0 +1,13 @@
+@import "../setting/all";
+
+.alert-notice {
+  background-color: $color-light-green;
+  border-color: #d0e9c6;
+  color: #3c763d;
+}
+
+.alert-alert {
+  background-color: $color-light-pink;
+  border-color: #ebcccc;
+  color: #a94442;
+}

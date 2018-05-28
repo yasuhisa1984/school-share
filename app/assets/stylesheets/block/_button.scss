@@ -1,0 +1,57 @@
+@import "../setting/all";
+
+.btn.btn-info {
+    color: #fff;
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    box-shadow: 0 2px 2px 0 rgba(156,39,176,.14), 0 3px 1px -2px rgba(156,39,176,.2), 0 1px 5px 0 rgba(156,39,176,.12);
+}
+
+.square_btn {
+  width:100%;
+  position: relative;
+  display: inline-block;
+  padding: 1.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: $color-primary-blue;
+  border: solid 1px $color-primary-deep-blue;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.square_btn:hover {
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+.square_btn_green {
+  width:100%;
+  position: relative;
+  display: inline-block;
+  padding: 1.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: $color-green;
+  border: solid 1px $color-green;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.square_btn_green:hover {
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+.square_btn:hover {
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
