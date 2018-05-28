@@ -6,7 +6,7 @@ class School::SearchForm
   def search
     normalize_values
     school_relation = School
-    school_relation = school_relation.where(name: school_name) if school_name.present?
+    school_relation = school_relation.where('schools.name LIKE(?)', "%#{school_name}%") if school_name.present?
 
     if address_area.present?
       school_relation = school_relation.joins(:addresses)

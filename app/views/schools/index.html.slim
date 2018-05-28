@@ -5,42 +5,6 @@
         i.material-icons search
         | 学校名を絞り込む
       .form-search
-          = render 'search_form', {search_form: @search_form, purposes: @purposes, areas: @areas}
+        = render 'search_form', {search_form: @search_form, purposes: @purposes, areas: @areas}
     .col-md-8
-      .school-result
-        .school-result__header
-          h2
-            | プログラミング教室一覧
-        .school_result__pagination
-          .school-result__pagination--info
-            = page_entries_info @schools
-          .school_result__pagination--pagination
-            = paginate @schools
-        .school-result__list
-            - @schools.each do |school|
-              .panel.panel-default
-                .panel-heading
-                  p
-                    | 学校名:
-                    = link_to school.name, school_path(school.id)
-                .panel-body
-                  p
-                    | サイトURL:
-                    = school.url
-                  p
-                    | 学校の説明:
-                    = school.description
-                  - if school.remote
-                    p
-                      | リモート:あり
-                  - else
-                    p
-                      | リモート:なし
-                  p
-                    | 学校の画像:
-                    = image_tag("gakkou.png")
-        .school_result__pagination
-          .school-result__pagination--info
-            = page_entries_info @schools
-          .school_result__pagination--pagination
-            = paginate @schools
+      = render 'school', {schools: @schools}

@@ -47,6 +47,20 @@ Faker::Config.locale = :ja
   )
 end
 
+#コース
+5.times do |n|
+  name = ['AIコース','pythonコース','Scalaコース','Webアプリケーションコース','JavaScriptコース']
+  price = Faker::Number.number(2)
+  period = ['3ヶ月','6ヶ月','1年','2年','特になし'].sample
+
+  Course.create!(
+    name: "#{name[n]}",
+    price: "#{price}",
+    period: "#{period}",
+    school_id: School.ids.first
+  )
+end
+
 #ポスト
 5.times {
   work = ['http://github.com','http://github.com/user'].sample
@@ -55,7 +69,8 @@ end
     work: "#{work}",
     story: "#{story}",
     user_id: User.ids.sample,
-    school_id: School.ids.first
+    school_id: School.ids.first,
+    course_id: Course.ids.first
   )
 }
 
@@ -73,20 +88,6 @@ end
     school_id: School.ids.first
   )
 }
-
-#コース
-5.times do |n|
-  name = ['AIコース','pythonコース','Scalaコース','Webアプリケーションコース','JavaScriptコース'].sample
-  price = Faker::Number.number(2)
-  period = ['3ヶ月','6ヶ月','1年','2年','特になし'].sample
-
-  Course.create!(
-    name: "#{name[n]}",
-    price: "#{price}",
-    period: "#{period}",
-    school_id: School.ids.first
-  )
-end
 
 #目的
 5.times do |n|

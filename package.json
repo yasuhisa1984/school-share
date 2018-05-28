@@ -2,6 +2,8 @@
   "name": "school-share",
   "private": true,
   "dependencies": {
-    "chart.js": "2.7.1"
+    "chart.js": "2.7.1",
+    "jquery": "^3.3.1",
+    "raty-js": "^2.8.0"
   }
 }

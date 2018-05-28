@@ -4,13 +4,4 @@
  *= require material_kit/demo
  */
 
-.alert-notice {
-  background-color: #dff0d8;
-  border-color: #d0e9c6;
-  color: #3c763d;
-}
 
-.bg-mask {
-  height: 100%;
-  background: rgba(255,255,255,0.3);
-}

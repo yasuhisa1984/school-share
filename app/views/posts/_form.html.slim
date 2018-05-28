@@ -1,27 +1,51 @@
-= simple_form_for posts, { url: posts_path } do |f|
+= simple_form_for posts, { url: school_posts_path } do |f|
   = render 'application/display_simple_form_error', form_error: f.error_notification
-  label.text.required
-    abbr title="required"
-      | [必須] 在学中もしくは卒業した学校を選択してください。
+  = hidden_field :post, :school_id, value: params[:school_id]
   br
-  = f.collection_select :school_id, schools, :id, :name, prompt: '選択してください', required: true
+  = f.label :course, class: "label__form"
+    | 在学していたコースを教えてください
+    span.badge.badge-pill.badge-rose="必須"
+  = f.collection_select :course_id, courses, :id, :name, {include_blank: true}, class: "form-control", required: true
   br
   = f.label :skills
-    | [必須] 身についたスキル
-  br
-  = f.simple_fields_for :skills do |skill|
-    = skill.text_field :name
-    = f.select_tag "post_score" + "#{[skill.index]}point", options_for_select(points), prompt: '選択してください', size: '1x1'
-    br
-  br
-  = f.label :purposes
-    | 目的
+      | 身についたスキルを教えてください
+  .skill__wrap
+    = f.simple_fields_for :skills do |skill|
+      = f.hidden_field_tag "post_score" + "#{[skill.index]}" + "[point]"
+      - if skill.index < 3
+        .row
+          .col-md-8.col-sm-6.col-xs-12
+            span.number_skill="#{skill.index + 1}"
+            | スキル
+            span.badge.badge-pill.badge-rose="必須"
+            = skill.text_field :name, class: 'form-control', required: true
+          .col-md-4.col-sm-6.col-xs-12
+            | 習得度を評価してください
+            span.badge.badge-pill.badge-rose="必須"
+            div class="points#{skill.index}"
+      - else
+        .row
+          .col-md-8.col-sm-6.col-xs-12
+            span.number_skill="#{skill.index + 1}"
+            | スキル
+            span.badge="任意"
+            = skill.text_field :name, class: 'form-control'
+          .col-md-4.col-sm-6.col-xs-12
+            | 習得度を評価してください
+            span.badge="任意"
+            div class="points#{skill.index}"
+  = f.label :purposes, class: "label__form"
+    | 入学した目的を選択してください
+    span.badge.badge-pill.badge-rose="必須"
   br
   = f.simple_fields_for :post_purposes do |purpose|
-    = purpose.collection_select :purpose_id, purposes, :id, :name, prompt: '選択してください'
+    = purpose.collection_select :purpose_id, purposes, :id, :name, {include_blank: true}, class: "form-control", required: true
   br
-  = f.input :work, label: "ポートフォリオURL", placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: {class: 'form-control'}, required: false
+  = f.input :work, label: "ポートフォリオを教えてください",placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: {class: 'form-control'}
   br
-  = f.input :story, label: "役立ったエピソード", as: :text, placeholder: "実際に役立ったエピソードをご記入ください。", input_html: {class: 'form-control', rows: 10}, required: true
+  = f.label :story
+    | 役立ったエピソードを教えてください
+    span.badge.badge-pill.badge-rose="必須"
+  = f.input :story, as: :text, label: false, placeholder: "実際に役立ったエピソードをご記入ください。", input_html: {class: 'form-control label__form', rows: 10}, required: true
   br
-  = f.submit "新規する", class: "btn btn-info"
+  = f.submit "新規に投稿する", class: "square_btn"

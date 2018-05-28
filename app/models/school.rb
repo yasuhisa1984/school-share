@@ -1,4 +1,5 @@
 class School < ApplicationRecord
+  has_many :posts, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :courses, dependent: :destroy
   has_many :skills, dependent: :destroy

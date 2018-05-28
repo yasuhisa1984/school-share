@@ -8,6 +8,9 @@ h1
     | 学んでいたプログラミングスクール:
     = link_to post.school.name, school_path(post.school.id)
     p
+    | 通っていたコース
+    = post.course.name
+    p
     | ポートフォリオ:
     = post.work
     p
