@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :posts, only:[:index, :new, :show, :create, :destroy] do
     collection do
       get :search
+      get :search_post
     end
   end
 end
