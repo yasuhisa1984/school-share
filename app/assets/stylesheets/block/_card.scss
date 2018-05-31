@@ -1,0 +1,38 @@
+@import "../setting/all";
+
+.card-color {
+  border-left: 3px solid $color-primary-blue;
+}
+
+.card-text {
+  text-align: left;
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.bg-light {
+  background-color: $color-light-gray;
+}
+
+.card-body__wrap {
+  background: white;
+}
+
+.card-body__navi {
+  @include media_query_large_pc {
+    height: 75px;
+  }
+
+  @include media_query_pc {
+    height: 75px;
+  }
+
+  @include media_query_tablet {
+    height: 145px;
+  }
+
+  @include media_query_mobile {
+    height: 100px;
+  }
+}
+
