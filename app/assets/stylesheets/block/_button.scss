@@ -55,3 +55,16 @@
   -khtml-opacity: 0.8;
   opacity: 0.8;
 }
+
+.btn-just-icon {
+  font-size: 20px;
+  padding: 6px 11px;
+  color: white;
+}
+
+.btn-just-icon:hover {
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
