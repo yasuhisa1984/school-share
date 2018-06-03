@@ -1,0 +1,29 @@
+@mixin media_query_mobile {
+  @media (max-width:320px){
+    @content;
+  }
+}
+
+@mixin media_query_phablet {
+  @media (min-width: 320px) and (max-width: 768px){
+    @content;
+  }
+}
+
+@mixin media_query_tablet {
+  @media (min-width: 768px) and (max-width: 1024px){
+    @content;
+  }
+}
+
+@mixin media_query_pc {
+  @media (min-width: 1024px) and (max-width: 1366px){
+    @content;
+  }
+}
+
+@mixin media_query_large_pc {
+  @media (min-width: 1366px){
+    @content;
+  }
+}

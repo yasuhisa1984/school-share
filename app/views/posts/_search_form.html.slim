@@ -1,0 +1,15 @@
+= simple_form_for search_form, as: 'search_post', url: :search_post_posts, html: { method: :get } do |f|
+  = f.label :school_name
+    | 学校名
+  = f.text_field :school_name, class: "form-control"
+  br
+  = f.label :purpose_name
+    | 目的
+  br
+  = f.collection_select :purpose_name, purposes, :name, :name, {include_blank: true}, class: "form-control"
+  br
+  = f.label :skill_name
+    | スキル
+  = f.text_field :skill_name, class: "form-control"
+  = button_tag type: 'submit', class: "square_btn" do
+    i.material-icons search この条件で検索する

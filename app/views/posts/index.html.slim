@@ -1,19 +1,11 @@
-h1
-  | 投稿一覧を見る
-- @posts.each do |post|
-    p
-    = link_to post.user.name, post_path(post.id)
-    | さんの投稿
-    p
-    | 学んでいたプログラミングスクール:
-    = link_to post.school.name, school_path(post.school.id)
-    p
-    | 通っていたコース
-    = post.course.name
-    p
-    | ポートフォリオ:
-    = post.work
-    p
-    | 学んだことが役立ったエピソード:
-    = post.story
-    hr
+.container
+  .row
+    .col-md-4
+      h1
+        i.material-icons search
+        | 投稿を絞り込む
+      .form-search
+        = render 'search_form', { search_form: @search_form, purposes: @purposes }
+    .col-md-8
+      h2
+      = render 'post', { posts: @posts }
