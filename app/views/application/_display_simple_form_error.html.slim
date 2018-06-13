@@ -1,4 +1,9 @@
-- if form_error
-  .alert.alert-danger
-    div
-      = form_error
+- if form_error.errors.any?
+    #error_explanation
+      .alert.alert-danger
+        = form_error.errors.count
+        | 件のエラーがあります。
+        ul
+          - form_error.errors.full_messages.each do |msg|
+            li= msg
+
