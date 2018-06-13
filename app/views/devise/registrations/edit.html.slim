@@ -1,42 +1,47 @@
-h2
-  | Edit 
-  = resource_name.to_s.humanize
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
-    i
-      | (leave blank if you don't want to change it)
-    br
-    = f.password_field :password, autocomplete: "off"
-    - if @minimum_password_length
-      br
-      em
-        = @minimum_password_length
-        |  characters minimum
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    i
-      | (we need your current password to confirm your changes)
-    br
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+.row.align-items-center
+  .col-sm-6.col-sm-offset-3
+    h1 プロフィールを編集
+    .panel.panel__original_style
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = render 'application/display_simple_form_error', form_error: resource
+        .form-group
+          = f.input :name, input_html: { class: "form-control" }, placeholder: "名前"
+        .form-group
+          = f.input :email, autofocus: false, input_html: { class: "form-control" }, placeholder: "メールアドレス"
+        .form-group
+          = f.input :password, autocomplete: "off", input_html: { class: "form-control" }, placeholder: "パスワード", hint: "※パスワード変更する場合に入力してください。"
+          - if @minimum_password_length
+            small.form-text.text-muted
+              = @minimum_password_length
+              | 文字以上で入力してください。
+        .form-group
+          = f.input :password_confirmation, autocomplete: "off", label:"変更パスワード確認" , input_html: { class: "form-control" }, placeholder: "変更パスワード確認"
+        .form-group
+          = f.input :current_password, autocomplete: "off", input_html: { class: "form-control" }, placeholder: "現在のパスワード"
+        .form-group
+          label プロフィール画像
+          - if profile_img(@user)
+            p
+              span.profile__image= profile_img(@user)
+          = f.file_field :avatar
+          = f.hidden_field :avatar_cache
+        .form-group
+          = f.input :age, label: "年齢", input_html: { min: 10, max: 100 }, hint: "※10~100の数値を入力"
+        .form-group
+          p
+            = f.input :gender, label: "性別", collection: { 男性: "男性", 女性: "女性"}
+        .form-group
+          p
+            = f.input :history, label: "プログラミング歴", input_html: { class: "form-control", size: "60x10" }
+        .form-group
+          p
+            = f.input :future, label:"将来の目標", input_html: { class: "form-control", size: "60x10" }
+        .form-group
+          p.text-center
+            = button_tag type: 'submit', class: "square_btn_green" do
+             i.material-icons 変更する
+    .panel.panel-default.panel-bg-style-original
+      .panel-body
+        p アカウントを削除
+        p= button_to "削除", registration_path(resource_name), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class: "btn-danger"
+
