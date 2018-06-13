@@ -1,42 +1,78 @@
-h1
-  = @school.name
-  | について
-p
-  | 学校名:
-  = @school.name
-p
-  | サイトURL:
-  = @school.url
-p
-  | 学校の説明:
-  = @school.description
-- if @school.remote
-  p
-    | リモート:あり
-- else
-  p
-    | リモート:なし
-h1
-  = @school.name
-  | の全国教室状況
-- @addresses.each do |address|
-  p
-    | 住所:
-    = address.name
-  p
-    | 地域:
-    = address.area
-h1
-  = @school.name
-  | のコース一覧
-- @courses.each do |course|
-  p
-    | コース名:
-    = course.name
-  p
-    | 価格:
-    = course.price
-    | 万円
-  p
-    | 受講期間:
-    = course.period
+.container
+  .row
+    .col-md-4.hidden-sm.hidden-xs
+      h1
+        i.material-icons search
+        | 学校名を絞り込む
+      .form-search
+        = render 'search_form', { search_form: @search_form, purposes: @purposes, areas: @areas }
+    .col-md-8
+      .card.mb-3.bg-light.text-center.mb-xl
+        = image_tag(@school.school_image_url, size: "700x350", alt: "アイコン", class: "m-md")
+        .card-body
+          .card-body__navi
+            .col-md-6
+              = link_to @school.url, class: "square_btn" do
+                i.material-icons note 公式サイトを見に行く
+            .col-md-6
+              = link_to new_school_post_path(@school.id), class: "square_btn_green" do
+                i.material-icons mode_comment 口コミを投稿する
+          .card-body__wrap
+            h3.card-title.pt-xl
+              = @school.name
+            p.card-text.text-muted
+              = @school.description
+          p.card-text.text-muted
+            small.text-muted
+              |更新日
+              = date_japan(@school.updated_at)
+      h2
+        = @school.name
+        | の全国教室状況
+      .table-responsive
+        table.table.table-bordered
+          thead
+            tr.active
+              th 地域名
+              th 住所
+          tbody
+            - @addresses.each do |address|
+              tr
+                th
+                  = address.area
+                td
+                  = address.name
+      h2
+        = @school.name
+        | オンラインコース状況
+      .table-responsive
+        table.table.table-bordered
+          thead
+             tr.active
+               th オンラインコース
+          tbody
+             tr
+              - if @school.remote
+                th あり
+              - else
+                th なし
+      h2
+        = @school.name
+        | のコース一覧情報
+      .table-responsive
+        table.table.table-bordered
+          thead
+             tr.active
+              th コース名
+              th 価格
+              th 受講期間
+          tbody
+            - @courses.each do |course|
+              tr
+                th
+                  = course.name
+                td
+                  = course.price
+                  | 万円
+                td
+                  = course.period

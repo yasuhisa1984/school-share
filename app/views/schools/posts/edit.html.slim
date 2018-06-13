@@ -1,0 +1,8 @@
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      h1.form_header
+        = @post.school.name
+        | について編集
+      = render 'posts/form', { posts: @post, schools: @schools, purposes: @purposes, points: @post.get_score_array, courses: @courses, when_froms: @when_froms, submit_type: "更新" }
+      = link_to "マイページに戻る", user_path(current_user)
