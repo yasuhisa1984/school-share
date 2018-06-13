@@ -23,15 +23,15 @@
                   .input-group
                     span.input-group-addon
                       i.material-icons face
-                    = f.input :name, autofocus: true, placeholder: "名前", input_html: { class: "form-control"}, label: false
+                    = f.input :name, autofocus: true, placeholder: "名前", input_html: { class: "form-control" }, label: false
                   .input-group
                     span.input-group-addon
                       i.material-icons email
-                    = f.input :email, autofocus: true, autocomplete: "email", input_html: {class: "form-control"}, placeholder: "メールアドレス", label: false
+                    = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control" }, placeholder: "メールアドレス", label: false
                   .input-group.mb-md
                     span.input-group-addon
                       i.material-icons lock_outline
-                    = f.input :password, autocomplete: "off", input_html: {class: "form-control"}, placeholder: "パスワード", label: false
+                    = f.input :password, autocomplete: "off", input_html: { class: "form-control" }, placeholder: "パスワード", label: false
                     - if @minimum_password_length
                         small.form-text.text-muted
                           = @minimum_password_length
@@ -39,12 +39,12 @@
                   .input-group
                     span.input-group-addon
                       i.material-icons lock_outline
-                    = f.input :password_confirmation, placeholder: "確認用パスワード", autocomplete: "off", input_html: { class: "form-control"}, label: false
+                    = f.input :password_confirmation, placeholder: "確認用パスワード", autocomplete: "off", input_html: { class: "form-control" }, label: false
                   - if devise_mapping.rememberable?
                     .field
                       = f.check_box :remember_me
                       = f.label :remember_me
                     .actions.text-center
-                      = f.submit "サインアップ", class: ["btn", "btn-lg", "btn-raised", "btn-primary"]
+                      = f.submit "サインアップ", class: %i[btn btn-lg btn-raised btn-primary]
                   .action
                       = render "devise/shared/links"

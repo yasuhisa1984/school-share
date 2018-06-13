@@ -1,16 +1,49 @@
-- if user_signed_in?
-  h1
-    | マイページ
-  p
-    |名前:
-    = @user.name
-  p
-    |メールアドレス:
-    = @user.email
-
-- else
-  h1
-    = @user
-    | さんのページ
+.container
+  .section.text-center.section-landing
+    .row
+      .col-md-8.col-md-offset-2
+        - if is_current_user?(@user)
+          .span3.well
+            h2 マイページ
+            .img-circle = profile_img(@user)
+            h3=@user.name
+            table.table.table-bordered.table__original_style
+              tbody
+                tr
+                  th.col-xs-3.col-ms-3.col-md-3.col-lg-3 性別
+                  td.table__original_td-style=@user.gender
+                tr
+                  th プログラミング歴
+                  td.table__original_td-style=@user.history
+                tr
+                  th 今後の目標
+                  td.table__original_td-style=@user.future
+            .text-right
+               = link_to "編集", edit_user_registration_path, class: 'fa fa-edit'
+          h2
+            | 投稿一覧
+            = render 'posts/post_result', { posts: @user.posts }
+        - else
+          .span3.well
+            h2
+              =@user.name
+              | のページ
+            .img-circle = profile_img(@user)
+            h3=@user.name
+            table.table.table-bordered.table__original_style
+              tbody
+                trt
+                  th.col-xs-3.col-ms-3.col-md-3.col-lg-3 性別
+                  td.table__original_td-style=@user.gender
+                tr
+                  th プログラミング歴
+                  td.table__original_td-style=@user.history
+                tr
+                  th 今後の目標
+                  td.table__original_td-style=@user.future
+            h2
+            = @user.name
+            | さんの投稿一覧
+            = render 'posts/post_result', { posts: @user.posts }
 
 
