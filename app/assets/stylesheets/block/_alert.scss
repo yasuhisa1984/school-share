@@ -10,4 +10,12 @@
   background-color: $color-light-pink;
   border-color: #ebcccc;
   color: #a94442;
+  label {
+    border-left: 4px solid $color-red;
+  }
 }
+
+.error {
+  color: red;
+}
+

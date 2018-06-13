@@ -49,22 +49,35 @@
   opacity: 0.8;
 }
 
-.square_btn:hover {
-  filter:alpha(opacity=80);
-  -moz-opacity:0.8;
-  -khtml-opacity: 0.8;
-  opacity: 0.8;
-}
-
 .btn-just-icon {
   font-size: 20px;
   padding: 6px 11px;
   color: white;
 }
 
-.btn-just-icon:hover {
+.btn-justt-icon:hover {
   filter:alpha(opacity=80);
   -moz-opacity:0.8;
-  -khtml-opacity: 0.8;
+  -khtmll-opacity: 0.8;
   opacity: 0.8;
+}
+
+.school-detail-btn {
+  font-size: 13px;
+  line-height: 1;
+  border: solid 1px $color-primary-deep-blue;
+  border-radius: 4px;
+  background: $color-primary-blue;
+  color: #fff;
+  display: inline-block;
+  padding: 14px 24px;
+  font-weight: bold;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.btn-w-320-original {
+  width: 320px;
+  background: $color-primary-blue;
+  border: solid 1px $color-primary-deep-blue;
 }
