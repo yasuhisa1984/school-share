@@ -5,24 +5,24 @@ class Post::SearchForm
 
   def search
     normalize_values
-    post_relation = Post
+    post = Post
 
     if school_name.present?
-      post_relation = post_relation.joins(:school)
-      post_relation = post_relation.where('schools.name LIKE(?)', "%#{school_name}%")
+      post = post.joins(:school)
+      post = post.where('schools.name LIKE(?)', "%#{school_name}%")
     end
 
     if purpose_name.present?
-      post_relation = post_relation.joins(:purposes)
-      post_relation = post_relation.where('purposes.name': purpose_name)
+      post = post.joins(:purposes)
+      post = post.where('purposes.name': purpose_name)
     end
 
     if skill_name.present?
-      post_relation = post_relation.joins(:skills)
-      post_relation = post_relation.where('skills.name LIKE(?)', "%#{skill_name}%")
+      post = post.joins(:skills)
+      post = post.where('skills.name LIKE(?)', "%#{skill_name}%")
     end
 
-    post_relation = post_relation.distinct
+    post = post.distinct
   end
 
   private
