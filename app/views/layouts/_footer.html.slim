@@ -3,10 +3,12 @@ footer.footer.bgc-gray
     nav.pull-left
       ul
         li
-          = link_to '利用規約', schools_path
+          = link_to '利用規約', page_path('about')
         li
-          = link_to 'プライバシポリシー', posts_path
+          = link_to 'プライバシポリシー', page_path('privacy')
+        li
+          = link_to 'お問い合わせ', new_contact_path
       .copyright.pull-right
         |  © 2018, made with
         i.fa.fa-heart.heart
-        |  by Yasuhisa Kokaji
+        |  by ITスクールシェア
