@@ -12,10 +12,9 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require twitter/bootstrap
-//= require_tree .
 //= require Chart.min.js
-//= require jquery
 //= require raty-js
 //= require jquery.validate.additional-methods
 //= require jquery.validate
+//= require twitter/bootstrap
+//= require_tree .
