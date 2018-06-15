@@ -11,8 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require material_kit
- *= require raty-js/lib/jquery.raty.css
  *= require_self
+ *= require raty-js/lib/jquery.raty.css
  *= require_tree .
  */
 

@@ -13,10 +13,16 @@ $(function() {
 
     //変数の値が未定義なら、星のスコアを初期化する
     //定義済みは変数を設定する。
+
+
     if (var_score !== 'undefined') {
-      $(".points" + index).raty({ score: var_score, starType: 'i' });
+      $(".points" + index).raty({
+        score: var_score, starType: 'i'}
+      );
     } else {
-      $(".points" + index).raty({ score: 0, starType: 'i' });
+      $(".points" + index).raty({
+        score: 0, starType: 'i'}
+      );
     }
 
     //raty-jsの設定、クリックされたらhidden_fieldに値をセットする

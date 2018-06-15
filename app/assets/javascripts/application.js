@@ -14,7 +14,7 @@
 //= require jquery
 //= require Chart.min.js
 //= require raty-js
-//= require jquery.validate.additional-methods
 //= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require twitter/bootstrap
 //= require_tree .

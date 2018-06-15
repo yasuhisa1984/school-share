@@ -12,6 +12,7 @@ module SchoolShare
     config.i18n.default_locale = :ja
     config.generators.template_engine = :slim
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    config.assets.paths << config.root.join("node_modules")
     config.generators do |g|
       g.helper false
       g.assets false
