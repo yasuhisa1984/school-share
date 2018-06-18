@@ -14,7 +14,7 @@
                   .card__body-course
                     = post.course.name
                 .card__body-text
-                  p= post.story.truncate(30)
+                  p= post.story.truncate(13)
                 .card__body-skill
                   p
                   - post.skills.each_with_index do |skill, index|

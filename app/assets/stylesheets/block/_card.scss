@@ -44,6 +44,25 @@
   background: white;
   border: 2px solid $color-light-gray;
   border-radius: 10px;         /* 角丸を指定 */
+
+  @include media_query_large_pc {
+    width: 600px;
+    height: 190px;
+  }
+
+  @include media_query_pc {
+    width: 600px;
+    height: 190px;
+  }
+
+  @include media_query_tablet {
+    width: 575px;
+    height: 190px;
+  }
+
+  @include media_query_mobile {
+    width: 180px;
+  }
 }
 
 
@@ -63,6 +82,34 @@
 
 .card {
   background-color: aliceblue;
+
+  @include media_query_large_pc {
+    img {
+      width: 700px;
+      height: 350px;
+    }
+  }
+
+  @include media_query_tablet {
+    img {
+      width: 700px;
+      height: 350px;
+    }
+
+  }
+
+  @include media_query_pc {
+    img {
+      width: 700px;
+      height: 350px;
+    }
+  }
+
+  @include media_query_mobile {
+    img {
+      width: 260px;
+    }
+  }
 }
 
 .card__body {
