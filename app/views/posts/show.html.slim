@@ -1,30 +1,32 @@
-h1
-  = @post.user.name
-  | さんの投稿ページ
-h2
-  |通ってた学校
-p
-  = @school.name
-h2
-  | コース
-p
-  = @course.name
-h2
-  = @school.name
-  | で身についたスキル一覧
-.chart__wrapper
-  canvas#myChart
-<script>draw_graph();</script>
-h2
-  | 入校目的
-- @purposes.each do |purpose|
-  p
-    = purpose.name
-h2
-  | 作った制作物
-p
-  = @post.work
-h2
-  | 学んだことが役立ったエピソード
-p
-  = @post.story
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      h3
+        = @post.user.name
+        | さんの投稿ページ
+      h2.midashi_style
+        |通ってた学校
+      h1.content_style
+        = link_to @school.name, school_path(@school.id)
+        |  (
+        = @course.name
+        | )
+      h2.midashi_style
+        = @school.name
+        | で身についたスキル一覧
+      .chart__wrapper
+        canvas#myChart
+      <script>draw_graph();</script>
+      h2.midashi_style
+        | 入校目的
+      - @purposes.each do |purpose|
+        p.content_style
+          = purpose.name
+      h2.midashi_style
+        | 作った制作物
+      p.content_style
+        = @post.work
+      h2.midashi_style
+        | 学んだことが役立ったエピソード
+      p.content_style
+        = @post.story

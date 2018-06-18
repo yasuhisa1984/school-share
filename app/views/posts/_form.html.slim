@@ -1,21 +1,25 @@
-= simple_form_for posts, { url: school_posts_path } do |f|
-  = render 'application/display_simple_form_error', form_error: f.error_notification
+= simple_form_for posts, { url: choose_new_or_edit } do |f|
   = hidden_field :post, :school_id, value: params[:school_id]
+  #error_message.alert-alert
+  = f.label :school_periods, class: "label__form"
+    | いつ頃在学していましたか?
+    span.badge.badge-pill.badge-rose="必須"
+  br
+  = f.collection_select :school_period_id, school_periods, :id, :name, { include_blank: true }, class: "form-control", required: true
   br
   = f.label :course, class: "label__form"
     | 在学していたコースを教えてください
     span.badge.badge-pill.badge-rose="必須"
-  = f.collection_select :course_id, courses, :id, :name, {include_blank: true}, class: "form-control", required: true
-  br
+  = f.collection_select :course_id, courses, :id, :name, { include_blank: true }, class: "form-control", required: true
   = f.label :skills
       | 身についたスキルを教えてください
   .skill__wrap
     = f.simple_fields_for :skills do |skill|
-      = f.hidden_field_tag "post_score" + "#{[skill.index]}" + "[point]"
+      = score_present__point_set(posts.skills[skill.index].score, skill.index, points[skill.index])
       - if skill.index < 3
         .row
           .col-md-8.col-sm-6.col-xs-12
-            span.number_skill="#{skill.index + 1}"
+            span.skill__wrap_number-skill="#{skill.index + 1}"
             | スキル
             span.badge.badge-pill.badge-rose="必須"
             = skill.text_field :name, class: 'form-control', required: true
@@ -39,13 +43,13 @@
     span.badge.badge-pill.badge-rose="必須"
   br
   = f.simple_fields_for :post_purposes do |purpose|
-    = purpose.collection_select :purpose_id, purposes, :id, :name, {include_blank: true}, class: "form-control", required: true
+    = purpose.collection_select :purpose_id, purposes, :id, :name, { include_blank: true }, class: "form-control", required: true
   br
-  = f.input :work, label: "ポートフォリオを教えてください",placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: {class: 'form-control'}
+  = f.input :work, label: "ポートフォリオを教えてください", placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: { class: 'form-control' }
   br
   = f.label :story
     | 役立ったエピソードを教えてください
     span.badge.badge-pill.badge-rose="必須"
-  = f.input :story, as: :text, label: false, placeholder: "実際に役立ったエピソードをご記入ください。", input_html: {class: 'form-control label__form', rows: 10}, required: true
+  = f.input :story, as: :text, label: false, placeholder: "実際に役立ったエピソードをご記入ください。", input_html: { class: 'form-control label__form', rows: 10 }, required: true
   br
-  = f.submit "新規に投稿する", class: "square_btn"
+  = f.submit "#{submit_type}する", class: "square_btn", id: "submit", data: { confirm: "#{submit_type}してもよろしいですか?" }

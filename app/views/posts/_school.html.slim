@@ -2,7 +2,7 @@
   .school-result__header
     h2
       | 投稿先を選択してください
-  .school_result__pagination
+  .school-result__pagination
     .school-result__pagination--info
       = page_entries_info schools
     .school_result__pagination--pagination
@@ -15,8 +15,8 @@
               .col-md-8
                 h2
                   = school.name
-  .school_result__pagination
+  .school-result__pagination
     .school-result__pagination--info
-      = page_entries_info @schools
-    .school_result__pagination--pagination
-      = paginate @schools
+      = page_entries_info schools
+    .school-result__pagination--pagination
+      = paginate schools

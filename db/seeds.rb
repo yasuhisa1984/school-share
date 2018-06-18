@@ -56,11 +56,25 @@ end
   price = Faker::Number.number(2)
   period = ['3ヶ月','6ヶ月','1年','2年','特になし'].sample
 
-  Course.create!(
-    name: "#{name[n]}",
-    price: "#{price}",
-    period: "#{period}",
-    school_id: School.ids.first
+  5.times do |index|
+    Course.create!(
+      name: "#{name[index]}",
+      price: "#{price}",
+      period: "#{period}",
+      school_id: School.ids[n]
+    )
+  end
+end
+
+#通学期間
+10.times do |n|
+  school_periods = %i[
+    現在 2017年頃(1年前) 2016年頃(2年前) 2015年頃(3年前) 2014年頃(4年前)
+    2013年頃(5年前) 2012年頃(6年前) 2011年頃(7年前) 2010年頃(8年前) 2009年頃(9年前) 2008年頃(10年前)
+  ]
+
+  SchoolPeriod.create!(
+    name: school_periods[n]
   )
 end
 
@@ -69,11 +83,12 @@ end
   work = ['http://github.com','http://github.com/user'].sample
   story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
   Post.create!(
-    work: "#{work}",
-    story: "#{story}",
+    work: work,
+    story: story,
     user_id: User.ids.sample,
     school_id: School.ids.first,
-    course_id: Course.ids.first
+    course_id: Course.ids.first,
+    school_period_id: SchoolPeriod.ids.first
   )
 }
 
@@ -84,12 +99,14 @@ end
   area = ['関東地方','中部地方','北海道/東北地方','近畿地方','四国地方',
           '中国地方','九州／沖縄地方','オンライン'].sample
 
-  Address.create!(
-    name: "#{name}",
-    postalcode: "#{postalcode}",
-    area: "#{area}",
-    school_id: School.ids.first
-  )
+  5.times do |index|
+    Address.create!(
+      name: "#{name}",
+      postalcode: "#{postalcode}",
+      area: "#{area}",
+      school_id: School.ids[index]
+    )
+  end
 }
 
 #目的
@@ -106,7 +123,7 @@ end
   Skill.create!(
     name: "#{name[n]}",
     post_id: Post.ids[n],
-    school_id: School.ids[n]
+    school_id: School.ids[n],
   )
 end
 

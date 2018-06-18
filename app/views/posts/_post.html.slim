@@ -8,20 +8,7 @@
     .post-result__pagination-pagination
       = paginate posts
   .post-result__list
-    - posts.each do |post|
-      = link_to post_path(post.id) do
-        .card.bg-light.text-dark.card-color.mb-sm
-          .card-body
-            h4.card-title
-              .row
-                = post.user.name
-                | さん
-                br
-                = post.school.name
-                br
-                = post.course.name
-            p.card-text
-              = post.story.truncate(30)
+    = render 'post_result', { posts: posts }
     .post-result__pagination
       .post-result__pagination-info
         = page_entries_info posts

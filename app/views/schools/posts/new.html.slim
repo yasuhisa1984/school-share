@@ -1,6 +1,8 @@
 .container
   .row
     .col-md-8.col-xs-offset-2
-      h2.form_header
+      h1.form_header
         | #{@school.name}について教えてください
-      = render "posts/form", {posts: @post, schools: @schools, purposes: @purposes, points: @points, courses: @courses }
+      .panel.panel__original_style
+        = render "posts/form", { posts: @post, schools: @schools, purposes: @purposes,
+          points: @points, courses: @courses, school_periods: @school_periods, submit_type: "投稿" }

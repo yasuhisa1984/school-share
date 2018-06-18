@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :school
   belongs_to :course
+  belongs_to :school_period
 
   has_many :skills, dependent: :destroy
   accepts_nested_attributes_for :skills
@@ -39,9 +40,18 @@ class Post < ApplicationRecord
 
   def register_score_table(params)
     skills.each_with_index do |skill, index|
-      build = skill.scores.build(params[index])
-      build.skill_id = skill.id
-      build.save
+      score = skill.build_score(params[index])
+      score.save
     end
+  end
+
+  def score_update(params)
+    skills.each_with_index do |skill, index|
+      skill.score.update(point: params[index][:point].to_i)
+    end
+  end
+
+  def get_score_array
+    skills.map { |item| item.score.point }
   end
 end

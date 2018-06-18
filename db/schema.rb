@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601010310) do
+ActiveRecord::Schema.define(version: 20180618222742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(version: 20180601010310) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.bigint "course_id", null: false
+    t.bigint "school_period_id"
     t.index ["course_id"], name: "index_posts_on_course_id"
     t.index ["school_id"], name: "index_posts_on_school_id"
+    t.index ["school_period_id"], name: "index_posts_on_school_period_id"
   end
 
   create_table "purposes", force: :cascade do |t|
@@ -62,6 +64,12 @@ ActiveRecord::Schema.define(version: 20180601010310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_purposes_on_name", unique: true
+  end
+
+  create_table "school_periods", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "school_purposes", force: :cascade do |t|
@@ -85,9 +93,9 @@ ActiveRecord::Schema.define(version: 20180601010310) do
 
   create_table "scores", force: :cascade do |t|
     t.integer "point", null: false
-    t.bigint "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "skill_id"
     t.index ["skill_id"], name: "index_scores_on_skill_id"
   end
 
@@ -127,6 +135,7 @@ ActiveRecord::Schema.define(version: 20180601010310) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -138,6 +147,7 @@ ActiveRecord::Schema.define(version: 20180601010310) do
   add_foreign_key "post_purposes", "posts"
   add_foreign_key "post_purposes", "purposes"
   add_foreign_key "posts", "courses"
+  add_foreign_key "posts", "school_periods"
   add_foreign_key "posts", "schools"
   add_foreign_key "school_purposes", "purposes"
   add_foreign_key "school_purposes", "schools"

@@ -9,6 +9,7 @@ html
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
     = stylesheet_link_tag '//fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_include_tag 'application'
+    = favicon_link_tag '/favicon.ico'
   body
     = render 'layouts/header'
     = render 'application/display_flash_message', flash: flash

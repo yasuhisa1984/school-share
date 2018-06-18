@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  before_action :set_form, only: %i[index search new]
+  before_action :set_form, only: %i[index search new show]
   layout '_base'
 
   def index
@@ -19,6 +19,7 @@ class SchoolsController < ApplicationController
   end
 
   def show
+    @search_form = School::SearchForm.new
     @school = School.find(params[:id])
     @addresses = @school.addresses
     @courses = @school.courses
@@ -30,7 +31,7 @@ class SchoolsController < ApplicationController
   end
 
   def set_form
-    @areas = ['関東地方','中部地方','北海道/東北地方','近畿地方','四国地方','中国地方','九州／沖縄地方','オンライン']
+    @areas = %i[関東地方 中部地方 北海道/東北地方 近畿地方 四国地方 中国地方 九州／沖縄地方]
     @purposes = Purpose.all
     @schools = School.all
   end

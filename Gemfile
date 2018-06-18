@@ -18,6 +18,7 @@ gem 'better_errors'
 gem 'devise'
 gem 'faker'
 gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails-confirm'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'html2slim'
@@ -34,6 +35,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'jquery-validation-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
