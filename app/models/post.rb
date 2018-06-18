@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :school
   belongs_to :course
-  belongs_to :when_from
+  belongs_to :school_period
 
   has_many :skills, dependent: :destroy
   accepts_nested_attributes_for :skills

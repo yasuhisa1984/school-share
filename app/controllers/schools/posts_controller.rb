@@ -52,7 +52,7 @@ class Schools::PostsController < ApplicationController
     @purposes = Purpose.all
     @points = Array.new
     @courses = School.find(params[:school_id]).courses
-    @when_froms = WhenFrom.all
+    @school_periods = SchoolPeriod.all
   end
 
   def score_params
@@ -67,7 +67,7 @@ class Schools::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:work, :story, :when_from_id, :school_id,
+    params.require(:post).permit(:work, :story, :school_period_id, :school_id,
                                  :course_id, skills_attributes: [:id, :name],
                                  post_purposes_attributes: [:id, :purpose_id])
   end
