@@ -19,7 +19,7 @@
                 - school.addresses.each do |address|
                   = address.area + "/"
           .panel-body
-            .col-md-4
+            .col-md-4.text-center
               p
               = link_to school_path(school.id) do
                 = image_tag("gakkou.png", size: "160x150")
