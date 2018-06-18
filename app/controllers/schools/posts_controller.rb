@@ -1,5 +1,5 @@
 class Schools::PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[new]
+  before_action :authenticate_user!
   before_action :set_form, only: %i[new edit confirm]
   before_action :set_post, only: %i[show update destroy]
 
