@@ -1,14 +1,14 @@
 @import "../setting/all";
 
 .btn.btn-info {
-    color: #fff;
-    background-color: #9c27b0;
-    border-color: #9c27b0;
-    box-shadow: 0 2px 2px 0 rgba(156,39,176,.14), 0 3px 1px -2px rgba(156,39,176,.2), 0 1px 5px 0 rgba(156,39,176,.12);
+  color: #fff;
+  background-color: #9c27b0;
+  border-color: #9c27b0;
+  box-shadow: 0 2px 2px 0 rgba(156,39,176,.14), 0 3px 1px -2px rgba(156,39,176,.2), 0 1px 5px 0 rgba(156,39,176,.12);
 }
 
 .square_btn {
-  width:100%;
+  width: 100%;
   position: relative;
   display: inline-block;
   padding: 1.5em;
@@ -22,14 +22,14 @@
 }
 
 .square_btn:hover {
-  filter:alpha(opacity=80);
-  -moz-opacity:0.8;
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
   -khtml-opacity: 0.8;
   opacity: 0.8;
 }
 
 .square_btn_green {
-  width:100%;
+  width: 100%;
   position: relative;
   display: inline-block;
   padding: 1.5em;
@@ -43,15 +43,28 @@
 }
 
 .square_btn_green:hover {
-  filter:alpha(opacity=80);
-  -moz-opacity:0.8;
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
   -khtml-opacity: 0.8;
   opacity: 0.8;
 }
 
 .square_btn:hover {
   filter:alpha(opacity=80);
-  -moz-opacity:0.8;
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+.btn-just-icon {
+  font-size: 20px;
+  padding: 6px 11px;
+  color: white;
+}
+
+.btn-just-icon:hover {
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
   -khtml-opacity: 0.8;
   opacity: 0.8;
 }

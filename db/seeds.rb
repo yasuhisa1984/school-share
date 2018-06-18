@@ -18,6 +18,7 @@ Faker::Config.locale = :ja
   history = ['独学でプログラミング歴半年です。','Sierで2年間働いてました。'].sample
   future = ['IOTの開発に役立てたいです。','ITの力で人材不足を解消！'].sample
   password = ENV['SEED_USER_PASSWORD']
+  uid = SecureRandom.uuid
   user = User.create!(
     name: name,
     email: email,
@@ -26,7 +27,9 @@ Faker::Config.locale = :ja
     history: history,
     future: future,
     password: password,
-    password_confirmation: password
+    password_confirmation: password,
+    uid: uid,
+    confirmed_at: DateTime.now
   )
 }
 
@@ -43,7 +46,7 @@ Faker::Config.locale = :ja
     url: "#{url}",
     description: "#{description}",
     school_image_url: "#{school_image_url}",
-    remote: "#{remote}",
+    remote: "#{remote}"
   )
 end
 

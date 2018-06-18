@@ -29,6 +29,11 @@ gem 'material_kit', '~> 1.0', '>= 1.0.0.2'
 gem 'kaminari'
 gem 'rails_admin'
 gem 'cancan'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,6 +46,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener_web'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
