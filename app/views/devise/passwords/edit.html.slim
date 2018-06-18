@@ -1,22 +1,35 @@
-h2
-  | Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    br
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-      br
-    = f.password_field :password, autofocus: true, autocomplete: "off"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+.wrapper
+  .header.header-filter style=("background-image: url('/assets/desk.jpg'); background-size: cover; background-position: top center;")
+    .bg-mask
+      .container
+        .row
+          .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.mt-xl.mb-xl
+            .card.card-signup
+              = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+                = f.hidden_field :reset_password_token
+                .header.header-primary.text-center
+                  h4 パスワード変更
+                  .social-line
+                    - if devise_mapping.omniauthable?
+                      - resource_class.omniauth_providers.each do |provider|
+                        = link_to omniauth_authorize_path(resource_name, provider) do
+                          - if provider == :facebook
+                            btn.btn-just-icon
+                              i.fa.fa-facebook-square
+                          - else
+                            btn.btn-just-icon
+                              i.fa.fa-twitter
+                p.text-divider
+                  .content
+                    .input-group.mb-md
+                      span.input-group-addon
+                        i.material-icons lock_outline
+                      = f.input :password, autocomplete: "off", input_html: { class: "form-control" }, placeholder: "新しいパスワード", label: false
+                      - if @minimum_password_length
+                          small.form-text.text-muted
+                            = @minimum_password_length
+                            | 文字以上で入力してください。
+                .actions.text-center
+                  = f.submit "パスワードを変更する", class: %i[btn btn-lg btn-raised btn-primary]
+                .action
+                  = render "devise/shared/links"
