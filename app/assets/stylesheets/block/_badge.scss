@@ -3,3 +3,37 @@
 .badge.badge-rose {
   background-color: $color-red;
 }
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.badge-primary {
+  background-color: #9c27b0 !important;
+}
+
+.badge-success {
+  background-color: rgb(34, 158, 92) !important;
+}
+
+.badge-info {
+  background-color: rgb(46, 148, 221) !important;
+}
+
+.badge-warning {
+  background-color: #ff9800 !important;
+}
+
+.badge-rose {
+    background-color: #e91e63 !important;
+}

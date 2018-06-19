@@ -28,12 +28,53 @@ label {
   text-align: center;
 }
 
-//星の評価
-.star-on-png {
-  color: $color-star-yellow;
+.form-group input[type=file] {
+  opacity: unset;
+  position: inherit;
 }
 
-.number_skill {
+.radio input[type=radio] {
+}
+
+//星の評価
+.star-off-png {
+  @include media_query_pc {
+    font-size: 20px;
+  }
+
+  @include media_query_tablet {
+    font-size: 20px;
+  }
+
+  @include media_query_mobile {
+    font-size: 12px;
+  }
+}
+
+.star-on-png {
+  color: $color-star-yellow;
+
+  @include media_query_pc {
+    font-size: 20px;
+  }
+
+  @include media_query_tablet {
+    height: 20px;
+  }
+
+  @include media_query_mobile {
+    font-size: 12px;
+  }
+}
+
+.skill__wrap {
+  height: 550px;
+  padding: 15px;
+  background-color: $color-light-blue;
+  display: block;
+}
+
+.skill__wrap_number-skill {
   display: inline-block;
   font-weight: bold;
   width: 1.5em;
@@ -45,9 +86,14 @@ label {
   background-color: $color-primary-blue;
 }
 
-.skill__wrap {
-  height: 550px;
-  padding: 15px;
-  background-color: $color-light-blue;
-  display: block;
+.school-result__header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid $color-primary-blue;
+  margin-bottom: 12px;
+}
+
+.post-result__header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid $color-primary-blue;
+  margin-bottom: 12px;
 }
