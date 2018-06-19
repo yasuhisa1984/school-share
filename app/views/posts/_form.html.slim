@@ -1,11 +1,11 @@
 = simple_form_for posts, { url: choose_new_or_edit } do |f|
   = hidden_field :post, :school_id, value: params[:school_id]
   #error_message.alert-alert
-  = f.label :when_froms, class: "label__form"
+  = f.label :school_periods, class: "label__form"
     | いつ頃在学していましたか?
     span.badge.badge-pill.badge-rose="必須"
   br
-  = f.collection_select :when_from_id, when_froms, :id, :name, { include_blank: true }, class: "form-control", required: true
+  = f.collection_select :school_period_id, school_periods, :id, :name, { include_blank: true }, class: "form-control", required: true
   br
   = f.label :course, class: "label__form"
     | 在学していたコースを教えてください

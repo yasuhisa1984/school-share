@@ -66,15 +66,15 @@ end
   end
 end
 
-#フローム
+#通学期間
 10.times do |n|
-  when_froms = %i[
+  school_periods = %i[
     現在 2017年頃(1年前) 2016年頃(2年前) 2015年頃(3年前) 2014年頃(4年前)
     2013年頃(5年前) 2012年頃(6年前) 2011年頃(7年前) 2010年頃(8年前) 2009年頃(9年前) 2008年頃(10年前)
   ]
 
-  WhenFrom.create!(
-    name: when_froms[n]
+  SchoolPeriod.create!(
+    name: school_periods[n]
   )
 end
 
@@ -88,7 +88,7 @@ end
     user_id: User.ids.sample,
     school_id: School.ids.first,
     course_id: Course.ids.first,
-    when_from_id: WhenFrom.ids.first
+    school_period_id: SchoolPeriod.ids.first
   )
 }
 

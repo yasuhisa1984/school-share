@@ -259,11 +259,39 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   if Rails.env.production?
-    config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
-    config.omniauth :twitter, ENV["TWITTER_ID_PRODUCTION"], ENV["TWITTER_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth(
+      :facebook, 
+      ENV["FACEBOOK_ID_PRODUCTION"], 
+      ENV["FACEBOOK_SECRET_PRODUCTION"], 
+      scope: 'email', 
+      display: 'popup', 
+      info_fields: 'name, email'
+    )
+    config.omniauth(
+      :twitter,
+      ENV["TWITTER_ID_PRODUCTION"], 
+      ENV["TWITTER_SECRET_PRODUCTION"], 
+      scope: 'email', 
+      display: 'popup', 
+      info_fields: 'name, email'
+    )
   else
-    config.omniauth :facebook, ENV["FACEBOOK_ID_DEVELOPMENT"], ENV["FACEBOOK_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
-    config.omniauth :twitter, ENV["TWITTER_ID_DEVELOPMENT"], ENV["TWITTER_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth(
+      :facebook, 
+      ENV["FACEBOOK_ID_DEVELOPMENT"], 
+      ENV["FACEBOOK_SECRET_DEVELOPMENT"], 
+      scope: 'email', 
+      display: 'popup', 
+      info_fields: 'name, email'
+    )
+    config.omniauth(
+      :twitter, 
+      ENV["TWITTER_ID_DEVELOPMENT"], 
+      ENV["TWITTER_SECRET_DEVELOPMENT"], 
+      scope: 'email', 
+      display: 'popup', 
+      info_fields: 'name, email'
+    )
   end
 
   # ==> Warden configuration
