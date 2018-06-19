@@ -82,7 +82,7 @@ $(function() {
 
   //入力項目ごとのエラーメッセージ定義
   let messages = {
-    'post[when_from_id]': { required: "いつ頃在学していたかを選択してください" },
+    'post[school_period_id]': { required: "いつ頃在学していたかを選択してください" },
     'post[course_id]': { required: "在学していたコースを選択してください" },
     'post[post_purposes_attributes][0][purpose_id]': { required: "入校した目的を選択してください" },
     'post[story]': { required: "役立ったエピソードを入力してください" },
