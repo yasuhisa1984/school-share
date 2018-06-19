@@ -4,5 +4,5 @@
       h1.form_header
         = @post.school.name
         | について編集
-      = render 'posts/form', { posts: @post, schools: @schools, purposes: @purposes, points: @post.get_score_array, courses: @courses, when_froms: @when_froms, submit_type: "更新" }
+      = render 'posts/form', { posts: @post, schools: @schools, purposes: @purposes, points: @post.get_score_array, courses: @courses, school_periods: @school_periods, submit_type: "更新" }
       = link_to "マイページに戻る", user_path(current_user)

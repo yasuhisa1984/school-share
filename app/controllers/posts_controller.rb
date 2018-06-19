@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def show
     @school = @post.school
     @skills = @post.skills
-    @post_skills = @post.skills
+    @period = @post.school_period
     @purposes = @post.purposes
     @course = @post.course
     gon.skill = []

@@ -6,11 +6,15 @@
         | さんの投稿ページ
       h2.midashi_style
         |通ってた学校
-      h1.content_style
-        = link_to @school.name, school_path(@school.id)
-        |  (
-        = @course.name
-        | )
+        h1.content_style
+          = link_to @school.name, school_path(@school.id)
+          |  (
+          = @course.name
+          | )
+      h2.midashi_style
+        |通学期間
+      p.content_style
+        = @period.name
       h2.midashi_style
         = @school.name
         | で身についたスキル一覧
