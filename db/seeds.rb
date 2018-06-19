@@ -69,7 +69,7 @@ end
 #通学期間
 10.times do |n|
   school_periods = %i[
-    現在 2017年頃(1年前) 2016年頃(2年前) 2015年頃(3年前) 2014年頃(4年前)
+    2018年(現在) 2017年頃(1年前) 2016年頃(2年前) 2015年頃(3年前) 2014年頃(4年前)
     2013年頃(5年前) 2012年頃(6年前) 2011年頃(7年前) 2010年頃(8年前) 2009年頃(9年前) 2008年頃(10年前)
   ]
 
@@ -79,18 +79,18 @@ end
 end
 
 #ポスト
-5.times {
+5.times do |n|
   work = ['http://github.com','http://github.com/user'].sample
   story = ['仕事で役立ちました。','憧れのアプリを製作しました。'].sample
   Post.create!(
     work: work,
     story: story,
     user_id: User.ids.sample,
-    school_id: School.ids.first,
-    course_id: Course.ids.first,
+    school_id: School.ids[n],
+    course_id: Course.ids[n],
     school_period_id: SchoolPeriod.ids.first
   )
-}
+end
 
 #アドレス
 5.times {
@@ -118,34 +118,37 @@ end
 end
 
 #スキル
-5.times do |n|
-  name = ['Ruby','Github','チーム開発','Jquery','アルゴリズム','マネージメント力']
-  Skill.create!(
-    name: "#{name[n]}",
-    post_id: Post.ids[n],
-    school_id: School.ids[n],
-  )
-end
+5.times {
+  name = ['Ruby','Github','チーム開発','Jquery','アルゴリズム','マネージメント力'].sample
+
+  5.times do |index|
+    Skill.create!(
+      name: "#{name}",
+      school_id: School.ids[index],
+      post_id: Post.ids[index]
+    )
+  end
+}
 
 #スコア
-5.times do |n|
-  point = [*1..5]
+25.times do |index|
+  point = [*1..5].sample
 
   Score.create!(
-    point: "#{point[n]}",
-    skill_id: Skill.ids[n]
+    point: "#{point}",
+    skill_id: Skill.ids[index]
   )
 end
 
 #中間テーブル
 5.times do |n|
   SchoolPurpose.create!(
-    school_id: School.ids.first,
+    school_id: School.ids[n],
     purpose_id: Post.ids[n]
   )
 
   PostPurpose.create!(
-    post_id: Post.ids.first,
+    post_id: Post.ids[n],
     purpose_id: Purpose.ids[n]
   )
 end

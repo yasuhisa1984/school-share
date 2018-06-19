@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20180618222742) do
     t.index ["school_id"], name: "index_addresses_on_school_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price"
