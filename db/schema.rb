@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612014234) do
+ActiveRecord::Schema.define(version: 20180618222742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(version: 20180612014234) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_addresses_on_school_id"
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -61,10 +53,10 @@ ActiveRecord::Schema.define(version: 20180612014234) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.bigint "course_id", null: false
-    t.bigint "when_from_id"
+    t.bigint "school_period_id"
     t.index ["course_id"], name: "index_posts_on_course_id"
     t.index ["school_id"], name: "index_posts_on_school_id"
-    t.index ["when_from_id"], name: "index_posts_on_when_from_id"
+    t.index ["school_period_id"], name: "index_posts_on_school_period_id"
   end
 
   create_table "purposes", force: :cascade do |t|
@@ -72,6 +64,12 @@ ActiveRecord::Schema.define(version: 20180612014234) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_purposes_on_name", unique: true
+  end
+
+  create_table "school_periods", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "school_purposes", force: :cascade do |t|
@@ -144,19 +142,13 @@ ActiveRecord::Schema.define(version: 20180612014234) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  create_table "when_froms", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "addresses", "schools"
   add_foreign_key "courses", "schools"
   add_foreign_key "post_purposes", "posts"
   add_foreign_key "post_purposes", "purposes"
   add_foreign_key "posts", "courses"
+  add_foreign_key "posts", "school_periods"
   add_foreign_key "posts", "schools"
-  add_foreign_key "posts", "when_froms"
   add_foreign_key "school_purposes", "purposes"
   add_foreign_key "school_purposes", "schools"
   add_foreign_key "scores", "skills"
