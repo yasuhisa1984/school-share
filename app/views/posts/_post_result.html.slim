@@ -7,6 +7,10 @@
                 = profile_img(post.user)
                 = post.user.name
                 | さん
+              .card__body-edit
+                - if is_current_user?(post.user)
+                  = link_to "編集", edit_school_post_path(post.school_id, post.id), class: 'fa fa-edit'
+                  = link_to "削除", school_post_path(post.school_id, post.id), class: 'fa fa-trash', method: :delete, data: { confirm: '本当に削除していいですか？' }
             = link_to post_path(post.id) do
               .card__kaiwa
                 .card__body-school
@@ -14,14 +18,11 @@
                   .card__body-course
                     = post.course.name
                 .card__body-text
-                  p= post.story.truncate(13)
+                  p= post.story.truncate(45)
                 .card__body-skill
-                  p
                   - post.skills.each_with_index do |skill, index|
-                      = badge_color(skill.name ,index)
+                    = badge_color(skill.name ,index)
                 .card__body-date
+                  | 投稿日
                   = date_japan(post.updated_at)
-      .card__body-edit
-        - if is_current_user?(post.user)
-          = link_to "編集", edit_school_post_path(post.school_id, post.id), class: 'fa fa-edit'
-          = link_to "削除", school_post_path(post.school_id, post.id), class: 'fa fa-trash', method: :delete, data: { confirm: '本当に削除していいですか？' }
+

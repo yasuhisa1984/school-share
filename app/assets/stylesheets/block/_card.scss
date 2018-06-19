@@ -18,6 +18,13 @@
   background: white;
 }
 
+.card .card-body {
+  @include media_query_mobile {
+    padding: 10px;
+  }
+}
+
+
 .card-body__navi {
   @include media_query_large_pc {
     height: 75px;
@@ -56,15 +63,20 @@
   }
 
   @include media_query_tablet {
-    width: 575px;
+    width: 520px;
+    height: 190px;
+  }
+
+  @include media_query_phablet {
+    width: 500px;
     height: 190px;
   }
 
   @include media_query_mobile {
-    width: 180px;
+    width: 210px;
+    height: auto;
   }
 }
-
 
 /* 三角アイコン - 枠線付きの吹き出し */
 .card__kaiwa::before{
@@ -155,13 +167,16 @@
    img {
     width: 50px;
     height: 50px;
-    
    }
 }
 
 .card__body-school {
   border-bottom: 1px dotted;
   justify-content: flex-end;
+
+  @include media_query_mobile {
+    font-size: 1.3rem;
+  }
 }
 
 .card__body-course {
@@ -173,6 +188,12 @@
   width: 65px;
   margin: 0 5px 10px 0;
   font-size: 1.2rem;
+  align-items: flex-end;
+
+  @include media_query_mobile {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
 }
 
 .card__body-text {
@@ -182,6 +203,7 @@
 
 .card__body-date {
   font-size: 1.2rem;
+  margin-top: 10px;
 }
 
 .card__body-skill {

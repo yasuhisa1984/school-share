@@ -5,13 +5,13 @@
 }
 
 @mixin media_query_phablet {
-  @media (min-width: 550px) and (max-width: 768px){
+  @media (min-width: 550px) and (max-width: 765px){
     @content;
   }
 }
 
 @mixin media_query_tablet {
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 765px) and (max-width: 1024px){
     @content;
   }
 }

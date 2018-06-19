@@ -31,7 +31,7 @@ class SchoolsController < ApplicationController
   end
 
   def set_form
-    @areas = %i[関東地方 中部地方 北海道/東北地方 近畿地方 四国地方 中国地方 九州／沖縄地方]
+    @areas = %i[関東地方 中部地方 北海道・東北地方 近畿地方 四国地方 中国地方 九州・沖縄地方]
     @purposes = Purpose.all
     @schools = School.all
   end

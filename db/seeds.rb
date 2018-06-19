@@ -96,8 +96,8 @@ end
 5.times {
   name = Faker::Address.state + Faker::Address.city + Faker::Address.street_address
   postalcode = Faker::Address.zip_code
-  area = ['関東地方','中部地方','北海道/東北地方','近畿地方','四国地方',
-          '中国地方','九州／沖縄地方','オンライン'].sample
+  area = ['関東地方','中部地方','北海道・東北地方','近畿地方','四国地方',
+          '中国地方','九州・沖縄地方'].sample
 
   5.times do |index|
     Address.create!(

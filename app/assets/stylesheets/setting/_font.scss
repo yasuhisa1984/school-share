@@ -1,3 +1,6 @@
+@import "media_query";
+@import "color";
+
 .midashi_style {
   margin: 25px 0 25px 0;
   padding: 13px 28px 12px;
@@ -38,7 +41,24 @@
   line-height: 1;
   speak: none;
   text-transform: none;
+
+  @include media_query_pc {
+    font-size: 25px;
+  }
+
+  @include media_query_tablet {
+    font-size: 25px;
+  }
+
+  @include media_query_mobile {
+    font-size: 25px;
+  }
 }
+
+.star-on-png {
+  color: $color-star-yellow;
+}
+
 
 .cancel-on-png:before {
   content: "\e600";

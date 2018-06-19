@@ -1,7 +1,7 @@
 .container
   .row
-    .col-md-4.hidden-sm.hidden-xs
-      h1
+    .col-md-4
+      h2
         i.material-icons search
         | 学校名を絞り込む
       .form-search
@@ -26,7 +26,7 @@
             small.text-muted
               |更新日
               = date_japan(@school.updated_at)
-      h2
+      h3
         = @school.name
         | の全国教室状況
       .table-responsive
@@ -42,7 +42,7 @@
                   = address.area
                 td
                   = address.name
-      h2
+      h3
         = @school.name
         | オンラインコース状況
       .table-responsive
@@ -56,7 +56,7 @@
                 th あり
               - else
                 th なし
-      h2
+      h3
         = @school.name
         | のコース一覧情報
       .table-responsive
