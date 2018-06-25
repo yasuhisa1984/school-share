@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-4
+    .col-md-4.hidden-md.hidden-sm.hidden-xs
       h2
         i.material-icons search
         | 学校名を絞り込む
@@ -21,14 +21,13 @@
             h3.card-title.pt-xl
               = @school.name
             p.card-text.text-muted
-              = @school.description
+              = simple_format(@school.description)
           p.card-text.text-muted
             small.text-muted
               |更新日
               = date_japan(@school.updated_at)
       h3
-        = @school.name
-        | の全国教室状況
+        | 全国教室状況
       .table-responsive
         table.table.table-bordered
           thead
@@ -43,7 +42,6 @@
                 td
                   = address.name
       h3
-        = @school.name
         | オンラインコース状況
       .table-responsive
         table.table.table-bordered
@@ -57,8 +55,7 @@
               - else
                 th なし
       h3
-        = @school.name
-        | のコース一覧情報
+        | コース一覧情報
       .table-responsive
         table.table.table-bordered
           thead
@@ -73,6 +70,6 @@
                   = course.name
                 td
                   = course.price
-                  | 万円
+                  | 円
                 td
                   = course.period

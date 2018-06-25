@@ -32,5 +32,5 @@
         = @post.work
       h2.midashi_style
         | 学んだことが役立ったエピソード
-      p.content_style
-        = @post.story
+      .content_style
+        = simple_format(@post.story)
