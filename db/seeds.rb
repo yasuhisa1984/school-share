@@ -39,6 +39,7 @@ Faker::Config.locale = :ja
   url = Faker::Internet.url
   description = Faker::Hacker.say_something_smart
   school_image_url = 'gakkou.png'
+  thumbnail = 'gakkou.png'
   remote = [true,false].sample
 
   School.create!(
