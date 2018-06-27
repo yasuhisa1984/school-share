@@ -1,10 +1,11 @@
 .container
   .row
-    .col-md-4
+    .col-md-8.col-md-push-4
+      = render 'school', { schools: @schools }
+    .col-md-4.col-md-pull-8
       h2
         i.material-icons search
         | 学校名を絞り込む
       .form-search
         = render 'search_form', { search_form: @search_form, purposes: @purposes, areas: @areas }
-    .col-md-8
-      = render 'school', { schools: @schools }
+
