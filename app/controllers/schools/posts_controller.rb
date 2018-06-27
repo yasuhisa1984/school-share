@@ -1,7 +1,12 @@
 class Schools::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_form, only: %i[new edit confirm]
+  before_action :set_form, only: %i[index new edit confirm]
   before_action :set_post, only: %i[show update destroy]
+
+  def index
+    @posts = Post.where(school_id: params[:school_id]).page(params[:page])
+    @search_form = Post::SearchForm.new
+  end
 
   def new
     @school = School.find(params.require(:school_id))
