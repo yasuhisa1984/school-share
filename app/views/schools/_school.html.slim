@@ -1,7 +1,7 @@
 .school-result
   .school-result__header
     h2
-      | プログラミング教室一覧
+      | 学校一覧
   .school_result__pagination
     .school-result__pagination--info
       = page_entries_info schools
@@ -12,25 +12,30 @@
         .panel
           .panel-heading
             .col-md-12
-              h2.fz-xl
-                = link_to school.name, school_path(school.id)
-              p.text-muted
-                i.material-icons.md-18.fz-xl place
-                - school.addresses.each do |address|
-                  = address.area + "/"
+              .panel__school
+                .panel__school-title
+                  h2.fz-xl.fw-b
+                    = link_to school.name, school_path(school.id)
+                    .panel__school-title-area
+                      p.text-muted
+                        i.material-icons place
+                        - school.addresses.each do |address|
+                          = address.area + "/"
+                .panel__school-comment
+                  p.text-muted
+                    = link_to school_posts_path(school.id) do
+                      i.material-icons mode_comment
+                      br
+                      = school.posts.count
+                      | 件
           .panel-body
-            .col-md-4
+            .col-md-4.text-center
               p
               = link_to school_path(school.id) do
-                = image_tag("gakkou.png", size: "160x150")
+                = image_tag(school.thumbnail, size: "160x150")
             .col-md-8
-              p.text-muted
-                i.material-icons.fz-xl mode_comment
-                | 口コミ
-                = school.posts.count
-                | 件
-              p.text-muted
-                = school.description
+              .text-muted
+                = simple_format(school.description.truncate(115))
               p.text-muted
                 i.material-icons.fz-xl school
                 | コース一覧

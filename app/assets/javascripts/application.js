@@ -10,12 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require Chart.min.js
 //= require rails-ujs
 //= require jquery
+//= require raty-js
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require twitter/bootstrap
 //= require_tree .
-//= require Chart.min.js
-//= require jquery
-//= require raty-js
-//= require jquery.validate.additional-methods
-//= require jquery.validate

@@ -6,22 +6,23 @@
       .row
         .col-md-6
           h1.title
-            | プログラミング教室選びで失敗しない
+            | ITスクール選びで悩まない
           h4
-            | Every landing page needs a small description after the big bold title, that's why we added this text here. Add here all the information that can make you or your product create the first impression.
+            | みんなの体験を見ることで、自分にあった学習サービスがわかる。
           br
-          a.btn.btn-danger.btn-raised.btn-lg[href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
-            i.fa.fa-play
-            |  Watch video 
+          = link_to posts_path, class: "btn btn-danger btn-raised btn-lg" do
+            i.material-icons mode_comment 口コミの一覧を見る
   .main.main-raised
     .container
       .section.text-center.section-landing
         .row
           .col-md-8.col-md-offset-2
             h2.title
-              | Let's talk product
+              | ITスクールで実際に身につくスキルを
+              br
+              | 本当に理解していますか?
             h5.description
-              | This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.
+              | ITスクールシェアは、プログラミング教室の在校生・卒業生の生の声を聞けるサービスです。
         .features
           .row
             .col-md-4
@@ -29,22 +30,25 @@
                 i.material-icons
                   | chat
                 h4.title
-                  | First Feature
+                  | 特徴1
                 p.description
-                  | Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.
+                  |  ITスクールでの体験を、実際に通っていた方が投稿。
+                  |  スクールで身についたスキルや、制作したポートフォリオが見れます。
             .col-md-4
               .feature.feature-success
                 i.material-icons
                   | verified_user
                 h4.title
-                  | Second Feature
+                  | 特徴2
                 p.description
-                  | Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.
+                  | 全国のITスクールを都道府県別にご紹介。
+                  | あなたの街のITスクールがわかります。
             .col-md-4
               .feature.feature-danger
                 i.material-icons
                   | fingerprint
                 h4.title
-                  | Third Feature
+                  | 特徴3
                 p.description
-                  | Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.
+                  | クチコミをあえて目視で確認しております。口コミの品質担保に
+                  | 徹底して取り組んでおります。

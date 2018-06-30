@@ -1,14 +1,14 @@
 .container
   .row
-    .col-md-4.hidden-sm.hidden-xs
-      h1
+    .col-md-4.hidden-md.hidden-sm.hidden-xs
+      h2
         i.material-icons search
         | 学校名を絞り込む
       .form-search
         = render 'search_form', { search_form: @search_form, purposes: @purposes, areas: @areas }
     .col-md-8
       .card.mb-3.bg-light.text-center.mb-xl
-        = image_tag(@school.school_image_url, size: "700x350", alt: "アイコン", class: "m-md")
+        = image_tag(@school.school_image_url, alt: @school.name, class: "m-md")
         .card-body
           .card-body__navi
             .col-md-6
@@ -21,14 +21,13 @@
             h3.card-title.pt-xl
               = @school.name
             p.card-text.text-muted
-              = @school.description
+              = simple_format(@school.description)
           p.card-text.text-muted
             small.text-muted
               |更新日
               = date_japan(@school.updated_at)
-      h2
-        = @school.name
-        | の全国教室状況
+      h3
+        | 全国教室状況
       .table-responsive
         table.table.table-bordered
           thead
@@ -42,8 +41,7 @@
                   = address.area
                 td
                   = address.name
-      h2
-        = @school.name
+      h3
         | オンラインコース状況
       .table-responsive
         table.table.table-bordered
@@ -56,9 +54,8 @@
                 th あり
               - else
                 th なし
-      h2
-        = @school.name
-        | のコース一覧情報
+      h3
+        | コース一覧情報
       .table-responsive
         table.table.table-bordered
           thead
@@ -73,6 +70,6 @@
                   = course.name
                 td
                   = course.price
-                  | 万円
+                  | 円
                 td
                   = course.period

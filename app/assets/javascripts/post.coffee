@@ -1,11 +1,11 @@
 window.draw_graph = ->
     ctx = document.getElementById("myChart").getContext('2d')
     myChart = new Chart(ctx, {
-        type: 'radar',
+        type: 'bar',
         data: {
             labels: gon.skill,
             datasets: [{
-                label: '# プログラミングスクールで身についたスキル',
+                label: '# 身についたスキル',
                 data: gon.point,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

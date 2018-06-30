@@ -1,10 +1,10 @@
 .container
   .row
-    .col-md-8.col-xs-offset-2
-      h1
+    .col-md-8.col-md-offset-2.col-xs-12
+      h2
         i.material-icons search
         | 通っていた学校名を教えてください
-      = simple_form_for @search_form, as: 'search', url: :search_posts, html: { method: :get } do |f|
+      = simple_form_for @search_form, as: 'search_school', url: :search_school_posts, html: { method: :get } do |f|
         = f.label :school_name
           | 学校名
         = f.text_field :school_name, class: "form-control"

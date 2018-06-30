@@ -1,5 +1,6 @@
 p
   | こんにちは、#{@email}さん
+p 「ITスクルールシェア」をご利用いただきましてありがとうございます。
 - if @resource.try(:unconfirmed_email?)
   p
     | あなたの登録メールアドレスが「#{@resource.unconfirmed_email}」に変更されましたのでお知らせいたします。

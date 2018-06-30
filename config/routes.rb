@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index new show create destroy] do
     resources :scores, only: %i[new create destroy edit]
     collection do
-      get :search
+      get :search_school
       get :search_post
     end
   end

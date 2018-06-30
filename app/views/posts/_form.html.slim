@@ -11,6 +11,13 @@
     | 在学していたコースを教えてください
     span.badge.badge-pill.badge-rose="必須"
   = f.collection_select :course_id, courses, :id, :name, { include_blank: true }, class: "form-control", required: true
+  br
+  = f.label :purposes, class: "label__form"
+    | 入学した目的を選択してください
+    span.badge.badge-pill.badge-rose="必須"
+  br
+  = f.simple_fields_for :post_purposes do |purpose|
+    = purpose.collection_select :purpose_id, purposes, :id, :name, { include_blank: true }, class: "form-control", required: true
   = f.label :skills
       | 身についたスキルを教えてください
   .skill__wrap
@@ -18,34 +25,27 @@
       = score_present__point_set(posts.skills[skill.index].score, skill.index, points[skill.index])
       - if skill.index < 3
         .row
-          .col-md-8.col-sm-6.col-xs-12
+          .col-md-8.col-sm-6.col-xs-12.skill__wrap_name
             span.skill__wrap_number-skill="#{skill.index + 1}"
             | スキル
             span.badge.badge-pill.badge-rose="必須"
             = skill.text_field :name, class: 'form-control', required: true
-          .col-md-4.col-sm-6.col-xs-12
+          .col-md-4.col-sm-6.col-xs-12.skill__wrap_star
             | 習得度を評価してください
             span.badge.badge-pill.badge-rose="必須"
             div class="points#{skill.index}"
       - else
         .row
-          .col-md-8.col-sm-6.col-xs-12
-            span.number_skill="#{skill.index + 1}"
+          .col-md-8.col-sm-6.col-xs-12.skill__wrap_name
+            span.skill__wrap_number-skill="#{skill.index + 1}"
             | スキル
             span.badge="任意"
             = skill.text_field :name, class: 'form-control'
-          .col-md-4.col-sm-6.col-xs-12
+          .col-md-4.col-sm-6.col-xs-12.skill__wrap_star
             | 習得度を評価してください
             span.badge="任意"
             div class="points#{skill.index}"
-  = f.label :purposes, class: "label__form"
-    | 入学した目的を選択してください
-    span.badge.badge-pill.badge-rose="必須"
-  br
-  = f.simple_fields_for :post_purposes do |purpose|
-    = purpose.collection_select :purpose_id, purposes, :id, :name, { include_blank: true }, class: "form-control", required: true
-  br
-  = f.input :work, label: "ポートフォリオを教えてください", placeholder: "ポートフォリオのURLがございましたらご記入ください。", input_html: { class: 'form-control' }
+  = f.input :work, label: "ポートフォリオを教えてください", placeholder: "ポートフォリオのURLをご記入ください。", input_html: { class: 'form-control' }
   br
   = f.label :story
     | 役立ったエピソードを教えてください

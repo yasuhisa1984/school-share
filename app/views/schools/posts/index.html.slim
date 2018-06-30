@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-4
+      h2
+        i.material-icons search
+        | 学校名を絞り込む
+      .form-search
+        = render 'posts/search_form', { search_form: @search_form, purposes: @purposes }
+    .col-md-8
+      = render 'posts/post', { posts: @posts }

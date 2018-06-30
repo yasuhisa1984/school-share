@@ -8,7 +8,7 @@
     .post-result__pagination-pagination
       = paginate posts
   .post-result__list
-    = render 'post_result', { posts: posts }
+    = render 'posts/post_result', { posts: posts }
     .post-result__pagination
       .post-result__pagination-info
         = page_entries_info posts

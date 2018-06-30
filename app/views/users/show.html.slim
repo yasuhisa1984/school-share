@@ -1,7 +1,7 @@
 .container
   .section.text-center.section-landing
     .row
-      .col-md-8.col-md-offset-2
+      .col-md-8.col-md-offset-2.col-xs-12
         - if is_current_user?(@user)
           .span3.well
             h2 マイページ
@@ -22,7 +22,7 @@
                = link_to "編集", edit_user_registration_path, class: 'fa fa-edit'
           h2
             | 投稿一覧
-            = render 'posts/post_result', { posts: @user.posts }
+          = render 'posts/post_result', { posts: @user.posts }
         - else
           .span3.well
             h2

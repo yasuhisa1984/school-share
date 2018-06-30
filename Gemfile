@@ -36,6 +36,7 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-validation-rails'
+gem 'high_voltage'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

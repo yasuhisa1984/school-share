@@ -1,16 +1,20 @@
 .container
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-8.col-md-offset-2.col-xs-12
       h3
         = @post.user.name
         | さんの投稿ページ
       h2.midashi_style
         |通ってた学校
-      h1.content_style
-        = link_to @school.name, school_path(@school.id)
-        |  (
-        = @course.name
-        | )
+        h1.content_style
+          = link_to @school.name, school_path(@school.id)
+          |  (
+          = @course.name
+          | )
+      h2.midashi_style
+        |通学期間
+      p.content_style
+        = @period.name
       h2.midashi_style
         = @school.name
         | で身についたスキル一覧
@@ -28,5 +32,5 @@
         = @post.work
       h2.midashi_style
         | 学んだことが役立ったエピソード
-      p.content_style
-        = @post.story
+      .content_style
+        = simple_format(@post.story)

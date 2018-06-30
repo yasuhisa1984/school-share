@@ -1,5 +1,6 @@
 p
   | こんにちは、#{@resource.email}さん
+p 「ITスクルールシェア」をご利用いただきましてありがとうございます。
 p あなたのアカウントはロックされました。
 p ロック解除するためにロック解除ボタンを押してください。
 p= link_to 'ロック解除', unlock_url(@resource, unlock_token: @token)

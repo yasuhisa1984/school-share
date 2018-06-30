@@ -1,11 +1,11 @@
 .container
   .row
-    .col-md-4.hidden-sm.hidden-xs
-      h1
+    .col-md-8.col-md-push-4
+      h2
+      = render 'post', { posts: @posts }
+    .col-md-4.col-md-pull-8
+      h2
         i.material-icons search
         | 投稿を絞り込む
       .form-search
         = render 'search_form', { search_form: @search_form, purposes: @purposes }
-    .col-md-8
-      h2
-      = render 'post', { posts: @posts }
