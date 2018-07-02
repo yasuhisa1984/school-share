@@ -36,7 +36,7 @@ ITスクール自体の段階評価ではなく、スクールで
 
 
 ## ER図
-![er](http://amecomi.boo.jp/school-share/school.png)
+![er](http://amecomi.boo.jp/school-share/images/er.png)
 
 
 
